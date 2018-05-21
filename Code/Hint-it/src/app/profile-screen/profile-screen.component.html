@@ -1,0 +1,34 @@
+<div class='profile-screen-container'>
+  <div class='profile-details'>
+    <div class='left-side'>
+      <div class='photo'>
+        <img src="{{ profile.photo }}" alt="{{ profile.name }}">
+      </div>
+      <div class='points-contener'>
+        <span> {{ profile.points }} </span>
+      </div>
+      <div class='counter'>
+        <span> 3 answers </span> <!-- not finished yet -->
+        <span> 5 questions </span> <!-- not finished yet -->
+      </div>
+    </div>
+    <div class='right-side'>
+      <div class='name'>
+        <span> {{ profile.name }}</span> 
+      </div>
+      <div class='description'>
+        <span> {{ profile.description }} </span>
+      </div>
+    </div>
+  </div>
+  <div class='tags-container'> <!-- *ngFor -->
+    <div class='single-tag'>
+      #Test tag
+    </div>
+  </div>
+  <div class='posts-container'> <!-- *ngFor -->
+    <div class='single-post'>
+      #Test post
+    </div>
+  </div>
+</div>

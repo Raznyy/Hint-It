@@ -1,0 +1,27 @@
+.profile-screen-container
+{
+    padding: 10px;
+    width: 100%;
+    display: block;
+}
+
+.profile-details
+{
+    width: 100%;
+    overflow: hidden;
+}
+
+.profile-details .left-side
+{
+    float: left;
+    width: 20%;
+    background: #6FA6CB;
+    height: 100%;
+}
+.profile-details .right-side
+{
+    float: right;
+    width: 80%;
+    background: #6FA616;
+    height: 100%;
+}
