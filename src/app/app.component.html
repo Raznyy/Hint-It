@@ -1,6 +1,15 @@
+<mat-toolbar color="primary">
+  <span>{{ title }}</span>
+</mat-toolbar>
 
-<div class='main-container'>
-  <div class='profile-screen'> <!-- profile-screen -->
-    <app-user-profile-screen></app-user-profile-screen>
-  </div>
+  <!-- <a mat-tab-link
+     *ngFor="let route of routes; let i = index"
+     [routerLink]="route.path"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{route.label}}
+  </a> -->
+
+<div class="site-content">
+  <router-outlet></router-outlet>
 </div>
