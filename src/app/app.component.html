@@ -1,5 +1,9 @@
-<mat-toolbar color="primary">
-  <span>{{ title }}</span>
+<mat-toolbar color="primary" role="heading">
+  <a mat-button routerLink="home">{{ title }}</a>
+  <span class="flex-spacer"></span>
+  <a mat-button routerLink="login">Login</a>
+  <a mat-button routerLink="register">Register</a>
+  <a mat-button routerLink="profile">Profile</a>
 </mat-toolbar>
 
   <!-- <a mat-tab-link
