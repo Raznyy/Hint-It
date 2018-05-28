@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { profile } from '../classes/profile';
 
+import { AuthService } from '../../services/auth.service';
+import {AngularFireAuth} from 'angularfire2/auth';
+
 @Component({
   selector: 'app-profile-screen',
   templateUrl: './profile-screen.component.html',
@@ -18,7 +21,12 @@ export class ProfileScreenComponent implements OnInit {
     posts: [ 15, 5 , 10 ]
   };
 
-  constructor() { }
+  constructor(public authService: AuthService,
+    public afAuth: AngularFireAuth) { }
+
+    signOut() {
+      this.authService.logout();
+    }
 
   ngOnInit() 
   {
