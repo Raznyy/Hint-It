@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../../services/auth.service';
+import {AngularFireAuth} from 'angularfire2/auth';
+
 @Component({
   selector: 'app-user-profile-screen',
   templateUrl: './user-profile-screen.component.html',
@@ -9,7 +12,7 @@ export class UserProfileScreenComponent implements OnInit {
 
   private profile;
 
-  constructor() {
+  constructor(public authService: AuthService, public afAuth: AngularFireAuth) {
     this.profile = {
       id: 1,
       name: 'CrazySreve69',
@@ -25,6 +28,10 @@ export class UserProfileScreenComponent implements OnInit {
   {
     // 1. Sprawdzenie czy użytkownik to aktualnie zalogowany czy obcy
     // 2. Pobranie danych profilu
+  }
+
+  signOut() {
+    this.authService.logout();
   }
 
 }
