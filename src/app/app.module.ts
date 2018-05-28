@@ -9,6 +9,8 @@ import { HomeScreenComponent } from './components/home-screen/home-screen.compon
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TextInputComponent } from './components/text-input/text-input.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -34,7 +36,8 @@ export const appRoutes: Routes = [
     UserProfileScreenComponent,
     HomeScreenComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    TextInputComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ export const appRoutes: Routes = [
       { enableTracing: true }
     ),
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
