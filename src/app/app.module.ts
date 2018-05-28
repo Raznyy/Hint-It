@@ -27,6 +27,7 @@ export const appRoutes: Routes = [
 ];
 
 
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
