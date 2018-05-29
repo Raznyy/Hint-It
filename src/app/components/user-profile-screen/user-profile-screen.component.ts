@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {AngularFireAuth} from 'angularfire2/auth';
 
-import { AuthService } from '../../services/auth.service';
-import {AngularFireAuth} from 'angularfire2/auth';
-
 @Component({
   selector: 'app-user-profile-screen',
   templateUrl: './user-profile-screen.component.html',

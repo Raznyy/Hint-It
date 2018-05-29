@@ -33,7 +33,6 @@ export const appRoutes: Routes = [
   { path: '**', component: PageNotFoundComponent }
 ];
 
-import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
