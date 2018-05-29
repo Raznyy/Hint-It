@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AuthService } from '../../services/auth.service';
 import {AngularFireAuth} from 'angularfire2/auth';
 
