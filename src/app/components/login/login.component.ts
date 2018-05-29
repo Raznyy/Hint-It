@@ -14,36 +14,34 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string = '';
 
-  constructor(public authService: AuthService,
-    private router: Router,
-    private fb: FormBuilder) 
-    { 
-      this.createForm();
-    }
+  constructor(public authService: AuthService, private router: Router, private fb: FormBuilder) 
+  { 
+    this.createForm();
+  }
 
-    createForm() {
-      this.loginForm = this.fb.group({
-        email: ['', Validators.required ],
-        password: ['',Validators.required]
-      });
-    }
+  createForm() {
+    this.loginForm = this.fb.group({
+      email: ['', Validators.required ],
+      password: ['', Validators.required ]
+    });
+  }
 
-    loginGoogle() {
-      this.authService.googleLogin();
-    }
+  loginGoogle() {
+    this.authService.googleLogin();
+  }
 
-    loginFacebook() {
-      this.authService.facebookLogin();
-    }
+  loginFacebook() {
+    this.authService.facebookLogin();
+  }
 
-    emailLogin(value){
-      this.authService.emailLogin(value)
-      .then(res => {
-        console.log(res);
-      }, err => {
-        console.log(err);
-      })
-    }
+  emailLogin(value){
+    this.authService.emailLogin(value)
+    .then(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    })
+  }
 
   ngOnInit() {
   }
