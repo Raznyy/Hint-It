@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PopupService } from './services/popup/popup.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hint It!';
+
+  constructor(private popup:PopupService){}
+
+  openPopUp( _action:String )
+  {
+    this.popup.openPopup(_action);
+  }
 }

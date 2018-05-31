@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { AuthService } from './services/auth.service';
+
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,18 +15,28 @@ import { HomeScreenComponent } from './components/home-screen/home-screen.compon
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoginPopupComponent } from './components/login-popup/login-popup.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { PopupService } from './services/popup/popup.service';
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeScreenComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', 
+    component: LoginPopupComponent,
+    data: { action: 'login' } //Jak przesyłać datę przez router?
+  },
+  { path: 'register',
+    component: LoginPopupComponent,
+    data: { action: 'register' } 
+  },
   { path: 'profile', component: UserProfileScreenComponent },
   { path: '',
     redirectTo: '/home',
@@ -40,7 +52,8 @@ export const appRoutes: Routes = [
     UserProfileScreenComponent,
     HomeScreenComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LoginPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +70,11 @@ export const appRoutes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [ PopupService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
