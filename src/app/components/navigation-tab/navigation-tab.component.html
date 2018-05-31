@@ -1,0 +1,11 @@
+<nav mat-tab-nav-bar class="test" mat-stretch-tabs >
+  <a mat-tab-link
+    *ngFor="let route of appRoutes; let i = index;"
+    [active]="activeLinkIndex === i"
+    (click)="activeLinkIndex = i; navigate( route.path )" 
+  >
+    <mat-icon *ngIf='route.data.icon!==undefined'>
+      {{ route.data.icon }}
+    </mat-icon>
+  </a>
+</nav>

@@ -1,18 +1,4 @@
-<mat-toolbar color="primary" role="heading">
-  <a mat-button routerLink="home">{{ title }}</a>
-  <span class="flex-spacer"></span>
-  <a mat-button (click)="openPopUp('login')" >Login</a>
-  <a mat-button (click)="openPopUp('register')">Register</a>
-  <a mat-button routerLink="profile">Profile</a>
-</mat-toolbar>
-
-  <!-- <a mat-tab-link
-     *ngFor="let route of routes; let i = index"
-     [routerLink]="route.path"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    {{route.label}}
-  </a> -->
+<app-navigation-tab></app-navigation-tab>
 
 <div class="site-content">
   <router-outlet></router-outlet>

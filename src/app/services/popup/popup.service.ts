@@ -1,6 +1,6 @@
 import { Injectable, Component } from '@angular/core';
-import { LoginPopupComponent } from '../../components/login-popup/login-popup.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AuthPopupComponent } from '../../components/auth-popup/auth-popup.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,20 +9,18 @@ export class PopupService {
 
   constructor(public dialog: MatDialog) { }
 
-  action:String;
-
-  openPopup( _action:String ): void 
+  openPopup( tab:String ): void 
   {
     let selectedTabIndex:Number = 0;
     let popupContent:String = '';
     let popupComponent;
 
-    if( _action == 'login')
+    if( tab == 'login')
     {
       popupContent = 'loginRegister';
       selectedTabIndex = 0;
     }
-    else if ( _action == 'register' )
+    else if ( tab == 'register' )
     {
       popupContent = 'loginRegister';
       selectedTabIndex = 1;
@@ -30,7 +28,7 @@ export class PopupService {
 
     if( popupContent == 'loginRegister')
     {
-      popupComponent = LoginPopupComponent;
+      popupComponent = AuthPopupComponent;
     }
 
     let dialogRef = this.dialog.open(popupComponent, {
