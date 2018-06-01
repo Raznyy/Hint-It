@@ -33,16 +33,12 @@ export class NavigationTabComponent implements OnInit {
     // Trzeba sprawdzić czy user jest zalogowany
     if( path == 'login' || path == 'register' )
     {
-      this.openPopUp( path ); 
+      this.popup.openPopup( "auth" , path);
     }
     else
     {
       this.router.navigate([path]);
     }
   }
-
-  openPopUp( tab:String )
-  {
-    this.popup.openPopup(tab);
-  }
+  
 }

@@ -5,35 +5,41 @@ import { AuthPopupComponent } from '../../components/auth-popup/auth-popup.compo
 @Injectable({
   providedIn: 'root'
 })
-export class PopupService {
+export class PopupService implements PopupInterface {
 
   constructor(public dialog: MatDialog) { }
 
-  openPopup( tab:String ): void 
+  type: String;
+  tab: String;
+
+  openPopup( type:String, tab:String ): void 
   {
+    this.type = type;
+    this.tab = tab;
     let selectedTabIndex:Number = 0;
-    let popupContent:String = '';
     let popupComponent;
 
-    if( tab == 'login')
-    {
-      popupContent = 'loginRegister';
-      selectedTabIndex = 0;
-    }
-    else if ( tab == 'register' )
-    {
-      popupContent = 'loginRegister';
-      selectedTabIndex = 1;
-    }
-
-    if( popupContent == 'loginRegister')
+    // popup type
+    if( type == 'auth')
     {
       popupComponent = AuthPopupComponent;
     }
 
+    // tab selection
+    if( tab == 'login')
+    {
+      selectedTabIndex = 0;
+    }
+    else if ( tab == 'register' )
+    {
+      selectedTabIndex = 1;
+    }
+
+    // opening popup
     let dialogRef = this.dialog.open(popupComponent, {
       width: '500px',
       data: { selectedTabIndex: selectedTabIndex }
     });
   }
+  
 }

@@ -1,6 +1,6 @@
 <nav mat-tab-nav-bar class="test" mat-stretch-tabs >
   <a mat-tab-link
-    *ngFor="let route of appRoutes; let i = index;"
+    *ngFor="let route of appRoutesVisible; let i = index;"
     [active]="activeLinkIndex === i"
     (click)="activeLinkIndex = i; navigate( route.path )" 
   >
