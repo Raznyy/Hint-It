@@ -4,7 +4,7 @@
     [active]="activeLinkIndex === i"
     (click)="activeLinkIndex = i; navigate( route.path )" 
   >
-    <mat-icon *ngIf='route.data.icon!==undefined'>
+    <mat-icon>
       {{ route.data.icon }}
     </mat-icon>
   </a>

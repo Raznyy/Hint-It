@@ -1,5 +1,5 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Routes } from '@angular/router';
 import { PopupService } from '../../services/popup/popup.service';
 
 @Component({
@@ -10,12 +10,19 @@ import { PopupService } from '../../services/popup/popup.service';
 export class NavigationTabComponent implements OnInit {
 
   appRoutes:any[];
+  appRoutesVisible:Routes[];
   activeLinkIndex = -1;
 
   constructor(private injector: Injector, private router: Router, private popup: PopupService) 
   {
     this.appRoutes = this.injector.get('appRoutes');
-    console.log(this.appRoutes);
+    this.appRoutesVisible = [];
+    this.appRoutes.forEach( ( route, i ) => 
+    {
+      if(route.data.icon != '' )
+        this.appRoutesVisible.push(route)
+    });
+    console.log(this.appRoutesVisible);
   }
 
   ngOnInit() {
