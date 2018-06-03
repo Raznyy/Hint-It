@@ -5,6 +5,7 @@ import { AngularFireModule } from 'angularfire2';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -83,6 +84,7 @@ export const appRoutes: Routes = [
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
