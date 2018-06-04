@@ -57,4 +57,17 @@ export class DatabaseService {
     );
   }
 
+  getLatestQuestions(limit: number = 25){
+    this.getQuestions(limit, "timestamp", "DESC");
+  }
+
+  getUserQuestions(userId: string, limit: number = 25){
+    let dbRef: AngularFireList<Question> = this.db.list('/questions', ref => ref.orderByChild("author").equalTo(userId).limitToFirst(limit) );
+    return dbRef.snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
+  }
+
 }
