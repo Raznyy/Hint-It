@@ -1,6 +1,12 @@
 <mat-card 
   class='list-element' 
   *ngFor=" let question of questions | async; let i = index;"
+  (click)="showQuestion(question.key)"
 >
-  <app-list-element [question]="question"></app-list-element>  
+  <!-- <a > -->
+    <app-list-element 
+      [question]="question"
+    >
+    </app-list-element>
+  <!-- </a> -->
 </mat-card>

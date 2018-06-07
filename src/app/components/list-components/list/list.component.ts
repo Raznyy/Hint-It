@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Question } from '../../../model/data.interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -14,11 +15,16 @@ export class ListComponent implements OnInit {
   @Input() questions:Observable<Question[]>;
   question:Observable<Question>;
 
-  constructor() { }
+  constructor( private router:Router ) { }
 
   ngOnInit() 
   {
-    
+  
+  }
+
+  showQuestion( questionId:String )
+  {
+    this.router.navigate( ['question', questionId ] ); 
   }
 
 }

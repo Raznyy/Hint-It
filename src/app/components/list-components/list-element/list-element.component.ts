@@ -14,7 +14,9 @@ export class ListElementComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    
   }
 
 }

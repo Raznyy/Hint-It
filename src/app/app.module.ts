@@ -15,17 +15,24 @@ import { PopupService } from './services/popup/popup.service';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserProfileScreenComponent } from './components/user-profile-screen/user-profile-screen.component';
-import { HomeScreenComponent } from './components/home-screen/home-screen.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { AuthPopupComponent } from './components/auth-popup/auth-popup.component';
-import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
-import { ListScreenComponent } from './components/list-components/list-screen/list-screen.component';
-import { ListComponent } from './components/list-components/list/list.component';
-import { QuestionCreateScreenComponent } from './components/question-create-screen/question-create-screen.component';
-import { ListElementComponent } from './components/list-components/list-element/list-element.component';
+//// Screens
+    import { UserProfileScreenComponent } from './components/user-profile-screen/user-profile-screen.component';
+    import { HomeScreenComponent } from './components/home-screen/home-screen.component';
+    import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+//// Authorisation
+    import { RegisterComponent } from './components/register/register.component';
+    import { LoginComponent } from './components/login/login.component';
+//// Popups
+    import { AuthPopupComponent } from './components/auth-popup/auth-popup.component'
+//// List
+    import { ListScreenComponent } from './components/list-components/list-screen/list-screen.component';
+    import { ListComponent } from './components/list-components/list/list.component';
+    import { ListElementComponent } from './components/list-components/list-element/list-element.component';
+//// Question
+    import { QuestionCreateScreenComponent } from './components/question-create-screen/question-create-screen.component';
+    import { QuestionCardComponent } from './components/question-components/question-card/question-card.component';
+//// Other
+    import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
 
 //Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -60,6 +67,9 @@ export const appRoutes: Routes = [
   { path: 'profile', component: UserProfileScreenComponent,
     data:  { icon: 'account_circle' }
   },
+  { path: 'question/:questionid', component: QuestionCardComponent ,
+    data:  { icon: '' }
+  },
   { path: '',
     redirectTo: '/',
     pathMatch: 'full',
@@ -83,7 +93,8 @@ export const appRoutes: Routes = [
     ListScreenComponent,
     ListComponent,
     QuestionCreateScreenComponent,
-    ListElementComponent
+    ListElementComponent,
+    QuestionCardComponent
   ],
   imports: [
     BrowserModule,
