@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { FirebaseDatabase } from 'angularfire2';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -68,6 +68,15 @@ export class DatabaseService {
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );
+  }
+
+  getQuestion(key: string){
+    let dbRef: AngularFireObject<Question> = this.db.object('/questions/'+key);
+    return dbRef.valueChanges();
+    // return dbRef.snapshotChanges().pipe(
+    //   map(c => ({ key: c.payload.key, ...c.payload.val() })
+    //   )
+    // );
   }
 
 }

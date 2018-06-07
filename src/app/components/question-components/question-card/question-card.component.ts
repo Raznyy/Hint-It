@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../../../model/data.interfaces';
 import { ActivatedRoute } from '@angular/router';
+import { DatabaseService } from '../../../services/database.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-question-card',
@@ -9,26 +11,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class QuestionCardComponent implements OnInit {
 
-  question:Question;
-  questionKey:String;
+  question: Observable<Question>;
+  questionKey: string;
 
-  constructor( private route: ActivatedRoute ) 
+  constructor( private route: ActivatedRoute, private db: DatabaseService ) 
   {
-    this.route.params.subscribe( params => this.showQuestion( params['questionid']) );
-    console.log( " nie mam danych - pobieram z route/:id "); 
-    
+    this.route.params.subscribe( (params) => {
+      // Get question by key
+      this.questionKey = params['questionid'];
+      this.question = db.getQuestion( this.questionKey )
+    });
   }
 
   ngOnInit() {
-  }
-
-  showQuestion( questionId:String )
-  {
-    // this.question = getQuestion( questionId );
-    // Dorobić funkcje która pobiera pytanie z pomocą wysłanego id -> getQuestion( selectedId );
-    // To chyba powinno być w serwisie
-    // check if exist - wpisanie w pasek adres /question/wymysloneCos - zwraca error
-    this.questionKey = questionId;
   }
 
 }
