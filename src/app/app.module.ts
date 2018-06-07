@@ -22,8 +22,10 @@ import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthPopupComponent } from './components/auth-popup/auth-popup.component';
 import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
-import { ListScreenComponent } from './components/list-screen/list-screen.component';
-import { ListComponent } from './components/list/list.component';
+import { ListScreenComponent } from './components/list-components/list-screen/list-screen.component';
+import { ListComponent } from './components/list-components/list/list.component';
+import { QuestionCreateScreenComponent } from './components/question-create-screen/question-create-screen.component';
+import { ListElementComponent } from './components/list-components/list-element/list-element.component';
 
 //Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -35,7 +37,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
-import { QuestionCreateScreenComponent } from './components/question-create-screen/question-create-screen.component';
 
 
 
@@ -81,7 +82,8 @@ export const appRoutes: Routes = [
     AuthPopupComponent,
     ListScreenComponent,
     ListComponent,
-    QuestionCreateScreenComponent
+    QuestionCreateScreenComponent,
+    ListElementComponent
   ],
   imports: [
     BrowserModule,
