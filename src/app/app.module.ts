@@ -22,6 +22,8 @@ import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthPopupComponent } from './components/auth-popup/auth-popup.component';
 import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
+import { ListScreenComponent } from './components/list-screen/list-screen.component';
+import { ListComponent } from './components/list/list.component';
 
 //Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -47,7 +49,7 @@ export const appRoutes: Routes = [
   { path: 'map', component: HomeScreenComponent,
     data:  { icon: 'map' }
   }, // MAPA
-  { path: 'list', component: HomeScreenComponent,
+  { path: 'list', component: ListScreenComponent,
     data:  { icon: 'list' }
   }, // LISTA 
   { path: 'register', component: AuthPopupComponent,
@@ -75,7 +77,9 @@ export const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     NavigationTabComponent,
-    AuthPopupComponent
+    AuthPopupComponent,
+    ListScreenComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
