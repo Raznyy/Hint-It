@@ -35,6 +35,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
+import { QuestionCreateScreenComponent } from './components/question-create-screen/question-create-screen.component';
 
 
 
@@ -79,7 +80,8 @@ export const appRoutes: Routes = [
     NavigationTabComponent,
     AuthPopupComponent,
     ListScreenComponent,
-    ListComponent
+    ListComponent,
+    QuestionCreateScreenComponent
   ],
   imports: [
     BrowserModule,
