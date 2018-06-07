@@ -49,7 +49,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 
 export const appRoutes: Routes = [
-  { path: 'ask', component: HomeScreenComponent,
+  { path: 'ask', component: QuestionCreateScreenComponent,
     data:  { icon: 'add_circle_outline' }
   }, //ASK
   { path: 'search', component: HomeScreenComponent,
