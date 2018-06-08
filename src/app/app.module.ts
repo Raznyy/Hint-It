@@ -31,6 +31,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //// Question
     import { QuestionCreateScreenComponent } from './components/question-create-screen/question-create-screen.component';
     import { QuestionCardComponent } from './components/question-components/question-card/question-card.component';
+    import { QuestionUserComponent } from './components/question-components/question-user/question-user.component';
+    import { QuestionAnswerPointsComponent } from './components/question-components/question-answer-points/question-answer-points.component';   
+    import { QuestionContentComponent } from './components/question-components/question-content/question-content.component';
 //// Other
     import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
 
@@ -44,6 +47,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+
+
 
 
 
@@ -94,7 +101,10 @@ export const appRoutes: Routes = [
     ListComponent,
     QuestionCreateScreenComponent,
     ListElementComponent,
-    QuestionCardComponent
+    QuestionCardComponent,
+    QuestionUserComponent,
+    QuestionAnswerPointsComponent,
+    QuestionContentComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +125,8 @@ export const appRoutes: Routes = [
     MatInputModule,
     MatTabsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule
   ],
   providers: [ 
     PopupService,

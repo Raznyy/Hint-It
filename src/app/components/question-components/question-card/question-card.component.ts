@@ -23,7 +23,14 @@ export class QuestionCardComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    
+  }
+
+  respond()
+  {
+    console.log("Tutaj robimy respond - otwieramy component odpowiedzi");
   }
 
 }

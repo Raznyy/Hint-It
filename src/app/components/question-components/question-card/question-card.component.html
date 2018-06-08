@@ -1,4 +1,32 @@
-<!-- {{ question.author }} -->
-{{ questionKey }}
-{{ (question | async)?.title }}
-<!-- Wyswietlanie konkretnego pytania  -->
+<mat-grid-list class="question-card" cols="4" rowHeight="fit">
+    <mat-grid-tile 
+        class="question-user-points-tile"
+        [colspan]="1"
+        [rowspan]="2"
+    >
+        <mat-card class="question-user-points-container">
+            <mat-card class="question-user-card">
+                <app-question-user></app-question-user>
+            </mat-card>
+            <mat-card class="question-user-card"> 
+                <app-question-answer-points></app-question-answer-points>
+            </mat-card>
+        </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile 
+        class="question-content-tile"
+        [colspan]="3"
+        [rowspan]="2"
+    >
+        <mat-card class="question-content-container">
+            <app-question-content [question]="question"></app-question-content>
+        </mat-card>
+    </mat-grid-tile>
+
+</mat-grid-list>
+<div class="respond-button-container">
+    <button mat-raised-button color="primary" class="respond-button" (click)="respond()"> 
+        RESPOND
+    </button>
+</div>
