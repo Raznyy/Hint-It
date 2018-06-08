@@ -28,10 +28,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     import { ListScreenComponent } from './components/list-components/list-screen/list-screen.component';
     import { ListComponent } from './components/list-components/list/list.component';
     import { ListElementComponent } from './components/list-components/list-element/list-element.component';
-//// Question
+//// Question & Answer
     import { QuestionCreateScreenComponent } from './components/question-create-screen/question-create-screen.component';
     import { QuestionCardComponent } from './components/question-components/question-card/question-card.component';
-    import { QuestionUserComponent } from './components/question-components/question-user/question-user.component';
+    import { QuestionAnswerUserComponent } from './components/question-components/question-answer-user/question-answer-user.component';
     import { QuestionAnswerPointsComponent } from './components/question-components/question-answer-points/question-answer-points.component';   
     import { QuestionContentComponent } from './components/question-components/question-content/question-content.component';
 //// Other
@@ -48,6 +48,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
+
 
 
 
@@ -102,8 +103,8 @@ export const appRoutes: Routes = [
     QuestionCreateScreenComponent,
     ListElementComponent,
     QuestionCardComponent,
-    QuestionUserComponent,
     QuestionAnswerPointsComponent,
+    QuestionAnswerUserComponent,
     QuestionContentComponent
   ],
   imports: [
