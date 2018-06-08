@@ -3,7 +3,7 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angular
 import { FirebaseDatabase } from 'angularfire2';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Question } from '../model/data.interfaces';
+import { Question, Answer } from '../model/data.interfaces';
 import { ThenableReference } from '@firebase/database-types';
 
 @Injectable({
@@ -13,12 +13,14 @@ export class DatabaseService {
 
   private db: AngularFireDatabase;
   private questionsRef: AngularFireList<Question>;
+  private answersRef: AngularFireList<Answer>;
   // public questions: Observable<Question[]>;
   
   constructor(firebaseDatabase: AngularFireDatabase) {
     this.db = firebaseDatabase;
     // Question list
     this.questionsRef = this.db.list('questions');
+    this.answersRef = this.db.list('answers');
     // this.questions = this.questionsRef.snapshotChanges().pipe(
     //   map(changes => 
     //     changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -77,6 +79,24 @@ export class DatabaseService {
     //   map(c => ({ key: c.payload.key, ...c.payload.val() })
     //   )
     // );
+  }
+
+  createAnswer(questionKey: string, content: string, userId: string): Promise<void>{
+    const key = this.answersRef.push({
+      content: content,
+      voteCount: 0,
+      upvotes: {},
+      downvotes: {},
+      author: userId,
+      timestamp: Date.now()
+    }).key;
+    // this.db.database.ref('a').transaction((transaction)=>{
+    //   transaction.
+    // });
+    const itemRef: AngularFireObject<any> = this.db.object('questions/'+questionKey+'/answers');
+    let answerRefObject = {};
+    answerRefObject[key] = true;
+    return itemRef.update(answerRefObject);
   }
 
 }
