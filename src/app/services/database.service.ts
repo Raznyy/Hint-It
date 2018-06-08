@@ -81,22 +81,25 @@ export class DatabaseService {
     // );
   }
 
-  createAnswer(questionKey: string, content: string, userId: string): Promise<void>{
-    const key = this.answersRef.push({
+  createAnswer(questionKey: string, content: string, userId: string): PromiseLike<void>{
+    const ref = this.answersRef.push({
       content: content,
       voteCount: 0,
       upvotes: {},
       downvotes: {},
       author: userId,
       timestamp: Date.now()
-    }).key;
+    });
+    const key = ref.key;
+    return ref.then(() => {
+      const itemRef: AngularFireObject<any> = this.db.object('questions/'+questionKey+'/answers');
+      let answerRefObject = {};
+      answerRefObject[key] = true;
+      itemRef.update(answerRefObject);
+    })
     // this.db.database.ref('a').transaction((transaction)=>{
     //   transaction.
     // });
-    const itemRef: AngularFireObject<any> = this.db.object('questions/'+questionKey+'/answers');
-    let answerRefObject = {};
-    answerRefObject[key] = true;
-    return itemRef.update(answerRefObject);
   }
 
 }
