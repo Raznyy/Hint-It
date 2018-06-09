@@ -23,8 +23,10 @@
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
     "@tinymce/tinymce-angular": "^2.0.0",
+    "@types/googlemaps": "^3.30.9",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
+    "save": "^2.3.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

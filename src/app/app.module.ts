@@ -14,6 +14,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MapComponent } from './components/map/map.component';
+import { FormsModule } from "@angular/forms";
 
 
 export const appRoutes: Routes = [
@@ -37,7 +39,8 @@ export const appRoutes: Routes = [
     HomeScreenComponent,
     RegisterComponent,
     LoginComponent,
-    TextInputComponent
+    TextInputComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ export const appRoutes: Routes = [
     ),
     MatToolbarModule,
     MatButtonModule,
-    EditorModule
+    EditorModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
