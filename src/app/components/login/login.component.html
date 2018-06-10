@@ -11,21 +11,28 @@
             <mat-form-field >
               <input matInput placeholder="Email" name="email" formControlName="email" required>
             </mat-form-field>
+            <div *ngIf="formErrors.email" class="valid-notify">
+              {{ formErrors.email }}
+              </div>
           </td>
         </tr>
         <tr>
           <td><mat-form-field >
             <input matInput placeholder="Hasło"  type="password" name="password" formControlName="password" required>
-          </mat-form-field></td>
+          </mat-form-field>
+          <div *ngIf="formErrors.password" class="valid-notify">
+            {{ formErrors.password }}
+          </div>
+        </td>
         </tr></table>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button type="submit" (click)="emailLogin(loginForm.value)" color="primary">Logowanie</button>
+    <button mat-raised-button type="submit" (click)="emailLogin(loginForm.value)" color="primary" [disabled]="!loginForm.valid">Logowanie</button>
   </mat-card-actions>
   <mat-card-actions>
     <button (click)="loginGoogle()" mat-raised-button >Logowanie Google</button>
     <button (click)="loginFacebook()" mat-raised-button color="primary" >Logowanie Facebook</button>
   </mat-card-actions>
-  <button mat-raised-button routerLink="/signup" routerLinkActive="active" class="create-account-txt">Nie masz konta? <strong>Zarejestruj się.</strong></button>
+  <button mat-raised-button routerLink="/register" routerLinkActive="active" class="create-account-txt">Nie masz konta? <strong>Zarejestruj się.</strong></button>
 </mat-card>

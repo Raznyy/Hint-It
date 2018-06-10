@@ -19,13 +19,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth.guard.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeScreenComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: UserProfileScreenComponent },
+  { path: 'profile', component: UserProfileScreenComponent, canActivate: [AuthGuard] },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -57,9 +60,10 @@ export const appRoutes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

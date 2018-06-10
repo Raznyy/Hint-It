@@ -3,16 +3,43 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private user: Observable<firebase.User>;
+  private userDetails: firebase.User = null;
+
   constructor(
     private afAuth: AngularFireAuth,
-    private router: Router
-  ) { }
+    private router: Router,
+    public snackBar: MatSnackBar
+  ) { 
+    this.user = afAuth.authState;
 
+      this.user.subscribe(
+        (user) => {
+          if (user) {
+            this.userDetails = user;
+          }
+          else {
+            this.userDetails = null;
+          }
+        }
+);
+  }
+
+  isLoggedIn() {
+    if (this.userDetails == null ) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  
 
 //ustawienie logowania jako popup
 private oAuthLogin(provider) {
@@ -25,8 +52,15 @@ emailSignup(value){
     firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
     .then(res => {
       console.log('Konto zostało stworzone', res);
-      this.router.navigateByUrl('/profile');
-    }, err => reject(err))
+      this.router.navigate(['/profile']).then(() => {
+        this.snackBar.open("Konto zostało zarejestrowane. Zalogowano.", "Ok", {
+          duration: 3000,
+        });
+      });
+    }, err => 
+    this.snackBar.open("Wystąpił błąd podczas rejestracji, spróbuj ponownie.", "Ok", {
+      duration: 5000, 
+    }));
   })
 }
 
@@ -36,8 +70,15 @@ emailLogin(value){
     firebase.auth().signInWithEmailAndPassword(value.email, value.password)
     .then(res => {
       console.log('Zalogowano');
-      this.router.navigateByUrl('/profile');
-    }, err => reject(err))
+      this.router.navigate(['/profile']).then(() => {
+        this.snackBar.open("Zalogowano.", "Ok", {
+          duration: 3000,
+        });
+      });
+    }, err => 
+    this.snackBar.open("Wystąpił błąd logowania, spróbuj ponownie.", "Ok", {
+      duration: 5000, 
+    }));
   })
 }
 
@@ -46,9 +87,16 @@ logout() {
   this.afAuth.auth.signOut()
   .then((res) => {
     console.log("Wylogowano");
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(() => {
+      this.snackBar.open("Wylogowano.", "Ok", {
+        duration: 3000,
+      });
+    });
   }, (error) => {
     console.log("Błąd: ", error);
+    this.snackBar.open("Wystąpił błąd podczas wylogowania, spróbuj ponownie.", "Ok", {
+      duration: 5000, 
+    });
   });
 }
 
@@ -58,10 +106,17 @@ facebookLogin() {
   return this.oAuthLogin(provider)
     .then(value => {
       console.log('Zalogowano przez Facebook', value),
-        this.router.navigateByUrl('/profile');
+      this.router.navigate(['/profile']).then(() => {
+        this.snackBar.open("Zalogowano.", "Ok", {
+          duration: 3000,
+        });
+      });
     })
     .catch(error => {
       console.log('Błąd: ', error);
+      this.snackBar.open("Wystąpił błąd logowania, spróbuj ponownie.", "Ok", {
+        duration: 5000, 
+      });
     });
 }
 
@@ -71,10 +126,18 @@ googleLogin() {
   return this.oAuthLogin(provider)
     .then(value => {
       console.log('Zalogowano przez Google', value),
-        this.router.navigateByUrl('/profile');
+      this.router.navigate(['/profile']).then(() => {
+        this.snackBar.open("Zalogowano.", "Ok", {
+          duration: 3000,
+        });
+      });
     })
     .catch(error => {
       console.log('Błąd: ', error);
+      this.snackBar.open("Wystąpił błąd logowania, spróbuj ponownie.", "Ok", {
+        duration: 5000, 
+      });
     });
+    
 }
 }

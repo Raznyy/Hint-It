@@ -1,3 +1,22 @@
-<p>
-  home-screen works!
-</p>
+<div class="box" >
+  <div *ngIf="afAuth.user | async; then authenticated else guest">
+  </div>
+</div>
+
+<!-- zawartosc dla niezalogowanego uztykownika -->
+<ng-template #guest class="box">
+  <h3>Widoczne dla niezalogowanych użytkowników...</h3>
+  <h3>Zaloguj się aby dodać pytanie lub odpowiedz...</h3>
+  <button mat-raised-button routerLink="/login" color="primary">Logowanie</button>
+</ng-template>
+
+<!-- zawartosc dla zalogowanego uzytkownika -->
+<ng-template #authenticated>
+  <div *ngIf="(afAuth.user | async) as user">
+    <h3>Widoczne dla zalogowanych użytkowników...</h3>
+    <h3>name: {{ user.displayName }}</h3>
+    <h3>email: {{ user.email }}</h3>
+    <h3>uid: {{ user.uid }}</h3>
+    <button mat-raised-button type="submit" (click)="signOut()" color="primary">Wyloguj</button>
+  </div>
+</ng-template>
