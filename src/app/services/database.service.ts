@@ -82,7 +82,7 @@ export class DatabaseService {
   }
 
   createAnswer(questionKey: string, content: string, userId: string): PromiseLike<void>{
-    const ref = this.answersRef.push({
+    const ref = this.db.list('answers/'+questionKey).push({
       content: content,
       voteCount: 0,
       upvotes: {},
@@ -100,6 +100,15 @@ export class DatabaseService {
     // this.db.database.ref('a').transaction((transaction)=>{
     //   transaction.
     // });
+  }
+
+  getQuestionAnswers(questionKey: string): Observable<Answer[]>{
+    let dbRef: AngularFireList<Answer> = this.db.list('answers/'+questionKey, ref => ref.orderByChild("timestamp") );
+    return dbRef.snapshotChanges().pipe(
+      map(changes => 
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    );
   }
 
 }
