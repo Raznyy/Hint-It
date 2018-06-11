@@ -40,6 +40,11 @@ export class AuthService {
       }
     }
   
+    getUserUID(): string
+    {
+      return this.userDetails.uid;
+    }
+
 
 //ustawienie logowania jako popup
 private oAuthLogin(provider) {

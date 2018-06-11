@@ -2,15 +2,17 @@
     <button 
       mat-icon-button color="primary"
       matTooltip="Vote up!"
+      (click)="vote('up')"
     >
       <mat-icon>
         arrow_drop_up
       </mat-icon>
     </button>
-    20
+    {{ (question | async)?.score }}
     <button 
       mat-icon-button color="accent"
       matTooltip="Vote down!"
+      (click)="vote('down')"
     >
       <mat-icon>
         arrow_drop_down

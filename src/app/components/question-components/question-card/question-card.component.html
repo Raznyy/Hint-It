@@ -9,7 +9,7 @@
                 <app-question-answer-user></app-question-answer-user>
             </mat-card>
             <mat-card class="question-user-card"> 
-                <app-question-answer-points></app-question-answer-points>
+                <app-question-answer-points (upVote)="voteUp($event)" (downVote)="voteDown($event)" [question]="question"></app-question-answer-points>
             </mat-card>
         </mat-card>
     </mat-grid-tile>
