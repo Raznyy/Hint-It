@@ -32,3 +32,12 @@
     </div>
   </div>
 </div>
+
+<!-- testowe pobieranie wartości bezpośrednio po zalogowaniu-->
+<div *ngIf="(afAuth.user | async) as user">
+  <h1>name: {{ user.displayName }}</h1>
+  <h1>email: {{ user.email }}</h1>
+  <h1>uid: {{ user.uid }}</h1>
+  <img src="{{ user.photoURL }}">
+  <button mat-raised-button type="submit" (click)="signOut()" color="primary">Wyloguj</button>
+</div>

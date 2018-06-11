@@ -1,0 +1,9 @@
+<mat-tab-group mat-stretch-tabs class="list-types-tab-bar">
+  <mat-tab 
+    *ngFor="let type of listTypes;" 
+    label="{{ type }}"
+    class="list-types-tab-bar-element"
+  >
+    <app-list [listType]="type" [questions]="questions"></app-list>
+  </mat-tab>
+<mat-tab-group>

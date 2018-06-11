@@ -1,0 +1,28 @@
+.question-card
+{
+    padding: 5px;
+    height: 400px;
+    margin: 25px;
+    border: 2px #EE1A60 solid;
+}
+.question-card mat-grid-tile mat-card
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+.question-content-container
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+.respond-button-container
+{
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+}
+.respond-button
+{
+    width: 85%;
+}

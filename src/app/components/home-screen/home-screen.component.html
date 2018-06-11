@@ -1,3 +1,21 @@
-<p>
+<p (click)="create()">
   home-screen works!
 </p>
+
+
+<p (click)="load()">
+  load
+</p>
+
+<!-- 
+<ul>
+  <li *ngFor="let question of questions | async">
+    {{ question.title }}, {{ question.content }}, {{ question.timestamp }}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let question of userQuestions | async">
+    {{ question.title }}, {{ question.content }}, {{ question.timestamp }}
+  </li>
+</ul> -->
