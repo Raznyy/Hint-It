@@ -36,7 +36,10 @@ export class DatabaseService {
       lng: 0,
       answers: [],
       author: userId,
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      voteCount: 0,
+      votes: {},
+      score: 0
     });
   }
 
@@ -85,8 +88,8 @@ export class DatabaseService {
     const ref = this.db.list('answers/'+questionKey).push({
       content: content,
       voteCount: 0,
-      upvotes: {},
-      downvotes: {},
+      votes: {},
+      score: 0,
       author: userId,
       timestamp: Date.now()
     });
@@ -109,6 +112,102 @@ export class DatabaseService {
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );
+  }
+
+  voteForQuestion(questionKey: string, voterId: string, voteType: "down"|"up"): PromiseLike<void>{
+    const itemRef = this.db.database.ref('questions/'+questionKey);
+    return itemRef.transaction(function(question) {
+      if (question) {
+        // Create list of voters if does not exist
+        if (!question.votes) {
+          question.votes = {};
+        }
+        // if voting up
+        if(voteType === "up"){
+          if (question.votes[voterId] === 1) {
+            // remove up vote
+            question.votes[voterId] = null;
+            question.score--;
+            question.voteCount--;
+          } else if (question.votes[voterId] === -1) {
+            // change vote
+            question.votes[voterId] = 1;
+            question.score += 2;
+          } else {
+            // vote up
+            question.votes[voterId] = 1;
+            question.score++;
+            question.voteCount++;
+          }
+        // if voting down
+        }else{
+          if (question.votes[voterId] === -1) {
+            // remove down vote
+            question.votes[voterId] = null;
+            question.score++;
+            question.voteCount--;
+          } else if (question.votes[voterId] === 1) {
+            // change vote
+            question.votes[voterId] = -1;
+            question.score -= 2;
+          } else {
+            // vote down
+            question.votes[voterId] = -1;
+            question.score--;
+            question.voteCount++;
+          }
+        }
+      }
+      return question;
+    });
+  }
+
+  voteForAnswer(questionKey: string, answerKey: string, voterId: string, voteType: "down"|"up"): PromiseLike<void>{
+    const itemRef = this.db.database.ref('answers/'+questionKey+'/'+answerKey);
+    return itemRef.transaction(function(answer) {
+      if (answer) {
+        // Create list of voters if does not exist
+        if (!answer.votes) {
+          answer.votes = {};
+        }
+        // if voting up
+        if(voteType === "up"){
+          if (answer.votes[voterId] === 1) {
+            // remove up vote
+            answer.votes[voterId] = null;
+            answer.score--;
+            answer.voteCount--;
+          } else if (answer.votes[voterId] === -1) {
+            // change vote
+            answer.votes[voterId] = 1;
+            answer.score += 2;
+          } else {
+            // vote up
+            answer.votes[voterId] = 1;
+            answer.score++;
+            answer.voteCount++;
+          }
+        // if voting down
+        }else{
+          if (answer.votes[voterId] === -1) {
+            // remove down vote
+            answer.votes[voterId] = null;
+            answer.score++;
+            answer.voteCount--;
+          } else if (answer.votes[voterId] === 1) {
+            // change vote
+            answer.votes[voterId] = -1;
+            answer.score -= 2;
+          } else {
+            // vote down
+            answer.votes[voterId] = -1;
+            answer.score--;
+            answer.voteCount++;
+          }
+        }
+      }
+      return answer;
+    });
   }
 
 }
