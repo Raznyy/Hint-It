@@ -10,6 +10,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 // Services
 import { AuthService } from './services/auth.service';
 import { PopupService } from './services/popup/popup.service';
+import { AuthGuard } from './services/auth.guard.service';
 
 //Components
 import { AppComponent } from './app.component';
@@ -48,17 +49,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
-
-
-
-
-
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 export const appRoutes: Routes = [
   { path: 'ask', component: QuestionCreateScreenComponent,
-    data:  { icon: 'add_circle_outline' }
+    data:  { icon: 'add_circle_outline' },
+    canActivate: [AuthGuard]
   }, //ASK
   { path: 'search', component: HomeScreenComponent,
     data:  { icon: 'search' }
@@ -73,7 +70,8 @@ export const appRoutes: Routes = [
     data:  { icon: 'account_circle' }
   }, // Testowy na razie aby otwierać popupa - trzeba sprawzdić czy user jest zalogowany i wyswietlac popup w odpowiednim momencie
   { path: 'profile', component: UserProfileScreenComponent,
-    data:  { icon: 'account_circle' }
+    data:  { icon: 'account_circle' },
+    canActivate: [AuthGuard]
   },
   { path: 'question/:questionid', component: QuestionCardComponent ,
     data:  { icon: '' }
@@ -127,9 +125,12 @@ export const appRoutes: Routes = [
     MatTabsModule,
     MatDialogModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSnackBarModule
   ],
   providers: [ 
+    AuthService, 
+    AuthGuard,
     PopupService,
     { provide: 'appRoutes', useValue: appRoutes } 
   ],

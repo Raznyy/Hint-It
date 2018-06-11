@@ -11,16 +11,23 @@
             <mat-form-field >
               <input matInput placeholder="Email" name="email" formControlName="email" required>
             </mat-form-field>
+            <div *ngIf="formErrors.email" class="valid-notify">
+              {{ formErrors.email }}
+            </div>
           </td>
         </tr>
         <tr>
           <td><mat-form-field >
             <input matInput placeholder="Hasło"  type="password" name="password"formControlName="password" required>
-          </mat-form-field></td>
+          </mat-form-field>
+          <div *ngIf="formErrors.password" class="valid-notify">
+            {{ formErrors.password }}
+          </div>
+        </td>
         </tr></table>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button type="submit" (click)="emailRegister(registerForm.value)" color="primary">Zarejestruj</button>
+    <button mat-raised-button type="submit" (click)="emailRegister(registerForm.value)" color="primary" [disabled]="!registerForm.valid">Zarejestruj</button>
   </mat-card-actions>
 </mat-card>
