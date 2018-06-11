@@ -10,14 +10,17 @@ export interface Question {
     timestamp: number; // Timestamp with time of creation
     author: string; // Author user id
     answers: Array<string> // List of answers
+    voteCount: number; // Latitude
+    score: number;  // Total score
+    votes: Map<number>; // List of user id's with 1 or -1 values
 }
 
 export interface Answer {
     key?: string; // Key provided from database
     content: string; // Description of answer
-    voteCount: number; // Latitude
-    upvotes: Map<string>; // List of user id's
-    downvotes: Map<string>; // List of user id's
     timestamp: number; // Timestamp with time of creation
     author: string; // Author user id
+    voteCount: number; // Latitude
+    score: number;  // Total score
+    votes: Map<number>; // List of user id's with 1 or -1 values
 }
