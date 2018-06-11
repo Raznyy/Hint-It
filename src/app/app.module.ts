@@ -37,7 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     import { QuestionContentComponent } from './components/question-components/question-content/question-content.component';
 //// Other
     import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
-
+//// Map 
+    import { MapComponent } from './components/map/map.component';
 //Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -50,6 +51,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 export const appRoutes: Routes = [
@@ -103,7 +105,8 @@ export const appRoutes: Routes = [
     QuestionCardComponent,
     QuestionAnswerPointsComponent,
     QuestionAnswerUserComponent,
-    QuestionContentComponent
+    QuestionConten,
+    MapComponent
   ],
   imports: [
     BrowserModule,
