@@ -24,3 +24,13 @@ export interface Answer {
     score: number;  // Total score
     votes: Map<number>; // List of user id's with 1 or -1 values
 }
+
+export interface User {
+    key?: string; // Key provided from database
+    username: string;
+    email: string;
+    avatar: string;
+    answers: Map<string>,
+    created: number,
+    score: number
+}
