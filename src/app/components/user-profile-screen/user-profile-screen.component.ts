@@ -21,6 +21,7 @@ export class UserProfileScreenComponent implements OnInit {
       tags: ['food','sex','parks'],
       posts: [ 15, 5 , 10 ]
     };
+
   }
 
   ngOnInit() 

@@ -38,10 +38,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     import { AnswerListComponent } from './components/answer-components/answer-list/answer-list.component'; 
     import { QuestionAnswerContentComponent } from './components/question-components/question-answer-content/question-answer-content.component';
     import { AnswerFormComponent } from './components/answer-components/answer-form/answer-form.component';
+//// Map 
+    import { MapComponent } from './components/map-components/map/map.component';   
+    import { MapScreenComponent } from './components/map-components/map-screen/map-screen.component';
 //// Other
     import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
-//// Map 
-    import { MapComponent } from './components/map/map.component';
+
+
 //Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -66,7 +69,7 @@ export const appRoutes: Routes = [
   { path: 'search', component: HomeScreenComponent,
     data:  { icon: 'search' }
   }, //SEARCH
-  { path: 'map', component: HomeScreenComponent,
+  { path: 'map', component: MapScreenComponent,
     data:  { icon: 'map' }
   }, // MAPA
   { path: 'list', component: ListScreenComponent,
@@ -113,7 +116,8 @@ export const appRoutes: Routes = [
     AnswerListComponent,
     QuestionAnswerContentComponent,
     AnswerFormComponent,
-    MapComponent
+    MapComponent,
+    MapScreenComponent
   ],
   imports: [
     BrowserModule,
