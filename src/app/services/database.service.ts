@@ -3,7 +3,7 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angular
 import { FirebaseDatabase } from 'angularfire2';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Question, Answer } from '../model/data.interfaces';
+import { Question, Answer, User } from '../model/data.interfaces';
 import { ThenableReference } from '@firebase/database-types';
 
 @Injectable({
@@ -14,6 +14,7 @@ export class DatabaseService {
   private db: AngularFireDatabase;
   private questionsRef: AngularFireList<Question>;
   private answersRef: AngularFireList<Answer>;
+  private usersRef: AngularFireList<User>;
   // public questions: Observable<Question[]>;
   
   constructor(firebaseDatabase: AngularFireDatabase) {
@@ -21,6 +22,7 @@ export class DatabaseService {
     // Question list
     this.questionsRef = this.db.list('questions');
     this.answersRef = this.db.list('answers');
+    this.usersRef = this.db.list('users');
     // this.questions = this.questionsRef.snapshotChanges().pipe(
     //   map(changes => 
     //     changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -209,6 +211,22 @@ export class DatabaseService {
       }
       return answer;
     });
+  }
+
+  createUser(userId: string, username: string, email: string, avatar: string): ThenableReference{
+    return this.usersRef.push({
+      username: username,
+      email: email,
+      avatar: avatar,
+      answers: {},
+      created: Date.now(),
+      score: 0
+    });
+  }
+
+  getUser(userId: string): Observable<User>{
+    let dbRef: AngularFireObject<User> = this.db.object('/users/'+userId);
+    return dbRef.valueChanges();
   }
 
 }
