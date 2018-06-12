@@ -15,14 +15,11 @@
     width: 100%;
     box-sizing: border-box;
 }
-.respond-button-container
+.answer-form-container
 {
     text-align: center;
     margin: 0 auto;
     padding: 20px;
     width: 80%;
 }
-.respond-button
-{
-    width: 85%;
-}
+

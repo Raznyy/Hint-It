@@ -6,7 +6,7 @@
     >
         <mat-card class="question-user-points-container">
             <mat-card class="question-user-card">
-                <app-question-answer-user></app-question-answer-user>
+                <app-question-answer-user [question]="question"></app-question-answer-user>
             </mat-card>
             <mat-card class="question-user-card"> 
                 <app-question-answer-points (upVote)="voteUp($event)" (downVote)="voteDown($event)" [question]="question"></app-question-answer-points>
@@ -20,13 +20,13 @@
         [rowspan]="2"
     >
         <mat-card class="question-content-container">
-            <app-question-content [question]="question"></app-question-content>
+            <app-question-answer-content [question]="question"></app-question-answer-content>
         </mat-card>
     </mat-grid-tile>
 
 </mat-grid-list>
-<div class="respond-button-container">
-    <button mat-raised-button color="primary" class="respond-button" (click)="respond()"> 
-        RESPOND
-    </button>
+<div class="answer-form-container">
+    <app-answer-form [questionKey]="questionKey"></app-answer-form>
 </div>
+<!--  temporary  -->
+<app-answer-list></app-answer-list>

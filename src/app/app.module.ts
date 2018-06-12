@@ -33,8 +33,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     import { QuestionCreateScreenComponent } from './components/question-create-screen/question-create-screen.component';
     import { QuestionCardComponent } from './components/question-components/question-card/question-card.component';
     import { QuestionAnswerUserComponent } from './components/question-components/question-answer-user/question-answer-user.component';
-    import { QuestionAnswerPointsComponent } from './components/question-components/question-answer-points/question-answer-points.component';   
-    import { QuestionContentComponent } from './components/question-components/question-content/question-content.component';
+    import { QuestionAnswerPointsComponent } from './components/question-components/question-answer-points/question-answer-points.component';
+    import { AnswerCardComponent } from './components/answer-components/answer-card/answer-card.component';
+    import { AnswerListComponent } from './components/answer-components/answer-list/answer-list.component'; 
+    import { QuestionAnswerContentComponent } from './components/question-components/question-answer-content/question-answer-content.component';
+    import { AnswerFormComponent } from './components/answer-components/answer-form/answer-form.component';
 //// Other
     import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
 
@@ -49,7 +52,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 export const appRoutes: Routes = [
@@ -103,7 +107,10 @@ export const appRoutes: Routes = [
     QuestionCardComponent,
     QuestionAnswerPointsComponent,
     QuestionAnswerUserComponent,
-    QuestionContentComponent
+    AnswerCardComponent,
+    AnswerListComponent,
+    QuestionAnswerContentComponent,
+    AnswerFormComponent
   ],
   imports: [
     BrowserModule,
@@ -126,7 +133,8 @@ export const appRoutes: Routes = [
     MatDialogModule,
     MatIconModule,
     MatGridListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   providers: [ 
     AuthService, 

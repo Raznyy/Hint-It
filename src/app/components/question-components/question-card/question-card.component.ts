@@ -72,9 +72,4 @@ export class QuestionCardComponent implements OnInit {
       });
   }
 
-  respond()
-  {
-    console.log("Tutaj robimy respond - otwieramy component odpowiedzi");
-  }
-
 }

@@ -1,0 +1,28 @@
+<mat-grid-list class="answer-card" cols="4" rowHeight="fit">
+  
+    <mat-grid-tile 
+        class="answer-content-tile"
+        [colspan]="3"
+        [rowspan]="2"
+    >
+        <mat-card class="answer-content-container">
+            <app-question-answer-content [answer]="answer"></app-question-answer-content>
+        </mat-card>
+    </mat-grid-tile>
+  
+    <mat-grid-tile 
+        class="question-user-points-tile"
+        [colspan]="1"
+        [rowspan]="2"
+    >
+        <mat-card class="answer-user-points-container">
+            <mat-card class="answer-user-card">
+                <app-question-answer-user [answer]="answer"></app-question-answer-user>
+            </mat-card>
+            <mat-card class="answer-user-card"> 
+                <app-question-answer-points (upVote)="voteUp($event)" (downVote)="voteDown($event)" [answer]="answer"></app-question-answer-points>
+            </mat-card>
+        </mat-card>
+    </mat-grid-tile>
+
+</mat-grid-list>

@@ -8,7 +8,14 @@
         arrow_drop_up
       </mat-icon>
     </button>
-    {{ (question | async)?.score }}
+    
+      <p *ngIf="question">
+          {{ (question | async)?.score }}
+      </p>
+      <p *ngIf="answer">
+          {{ (answer)?.score }}
+      </p>
+
     <button 
       mat-icon-button color="accent"
       matTooltip="Vote down!"

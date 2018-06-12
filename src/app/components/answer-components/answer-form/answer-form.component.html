@@ -1,0 +1,28 @@
+<mat-accordion>
+  <mat-expansion-panel 
+  (opened)="respondButtonStatus = true"
+  (closed)="respondButtonStatus = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <button mat-raised-button color="primary" class="respond-button"> 
+            RESPOND
+        </button>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form class="answer-form" (ngSubmit)="respond(answerForm)" #answerForm="ngForm">
+      <mat-form-field>
+        <textarea matInput 
+          placeholder="Write an answer..."
+          [(ngModel)]="answerModel.content" 
+          name="content"
+          #content="ngModel"
+          required >
+        </textarea>
+      </mat-form-field>
+
+      <button mat-raised-button color="accent"> Send! </button>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>

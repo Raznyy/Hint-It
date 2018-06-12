@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Question } from '../../../model/data.interfaces';
+import { Question, Answer } from '../../../model/data.interfaces';
 
 @Component({
   selector: 'app-question-answer-user',
@@ -9,6 +9,7 @@ import { Question } from '../../../model/data.interfaces';
 })
 export class QuestionAnswerUserComponent implements OnInit {
 
+  @Input() answer:Observable<Answer>;
   @Input() question:Observable<Question>;
 
   constructor() { }

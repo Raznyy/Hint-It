@@ -1,6 +1,12 @@
 <mat-card-header>
     <mat-card-title>
-        Author: {{ (question | async)?.author }}
+        Author:
+        <p *ngIf="question">
+            {{ (question | async)?.author }}
+        </p>
+        <p *ngIf="answer">
+            {{ (answer)?.author }}
+        </p>
     </mat-card-title>
     <mat-card-subtitle>
       Punkty usera: 123

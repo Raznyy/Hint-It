@@ -11,14 +11,14 @@ export class QuestionAnswerPointsComponent implements OnInit {
 
   constructor() { }
 
-  @Input() question: Observable<Question>; 
+  @Input() question: Observable<Question>;
+  @Input() answer: Observable<Question>; 
 
   @Output() upVote: EventEmitter<any> = new EventEmitter();
   @Output() downVote: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() 
   {
-    console.log(this.question);
   }
 
   vote( voteType: String )
