@@ -106,11 +106,12 @@ export class DatabaseService {
   }
 
   getQuestionAnswers(questionKey: string): Observable<Answer[]>{
-    let dbRef: AngularFireList<Answer> = this.db.list('answers/'+questionKey, ref => ref.orderByChild("timestamp") );
+    let dbRef: AngularFireList<Answer> = this.db.list('answers/'+questionKey, ref => ref.orderByChild("score") );
     return dbRef.snapshotChanges().pipe(
       map(changes => 
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
+      ),
+      map(array => array.reverse())
     );
   }
 
