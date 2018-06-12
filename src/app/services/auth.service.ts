@@ -5,6 +5,7 @@ import * as firebase from 'firebase/app';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import {MatSnackBar} from '@angular/material';
+import { DatabaseService } from './database.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
+    private db: DatabaseService,
     public snackBar: MatSnackBar
   ) { 
     this.user = afAuth.authState;
@@ -57,6 +59,12 @@ emailSignup(value){
     firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
     .then(res => {
       console.log('Konto zostało stworzone', res);
+      this.db.createUser(
+        value.user.uid,
+        "TMPUSERNAME",// xxx: porpawic - value.user.displayName,
+        value.user.email,
+        value.user.photoURL // tutaj tez chyba brakuje foty domyslnej
+      );
       this.router.navigate(['/profile']).then(() => {
         this.snackBar.open("Konto zostało zarejestrowane. Zalogowano.", "Ok", {
           duration: 3000,
@@ -110,7 +118,16 @@ facebookLogin() {
   const provider = new firebase.auth.FacebookAuthProvider();
   return this.oAuthLogin(provider)
     .then(value => {
-      console.log('Zalogowano przez Facebook', value),
+      console.log('Zalogowano przez Facebook', value);
+      // Create user in DB
+      if(value.additionalUserInfo.isNewUser === true){
+        this.db.createUser(
+          value.user.uid,
+          value.user.displayName,
+          value.user.email,
+          value.user.photoURL
+        );
+      }
       this.router.navigate(['/profile']).then(() => {
         this.snackBar.open("Zalogowano.", "Ok", {
           duration: 3000,
@@ -130,7 +147,16 @@ googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
   return this.oAuthLogin(provider)
     .then(value => {
-      console.log('Zalogowano przez Google', value),
+      console.log('Zalogowano przez Google', value);
+      // Create user in DB
+      if(value.additionalUserInfo.isNewUser === true){
+        this.db.createUser(
+          value.user.uid,
+          value.user.displayName,
+          value.user.email,
+          value.user.photoURL
+        );
+      }
       this.router.navigate(['/profile']).then(() => {
         this.snackBar.open("Zalogowano.", "Ok", {
           duration: 3000,
