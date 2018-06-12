@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
-import { Router, CanActivate } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import {MatSnackBar} from '@angular/material';
+import { Observable } from 'rxjs';
+import {AngularFireAuth} from 'angularfire2/auth';
+import { map, take, tap } from 'rxjs/operators';
+
 
 
 @Injectable()
   export class AuthGuard implements CanActivate {
 
     constructor(private router: Router,
-                private afAuth: AuthService,
+                public afAuth: AngularFireAuth,
                 public snackBar: MatSnackBar) { }
   
-    canActivate() {
-      if(this.afAuth.isLoggedIn() ) {
-        return true;
-      }
-      this.router.navigate(['/login']).then(() => {
-        this.snackBar.open("Zaloguj się aby zobaczyć swój profil.", "Ok", {
-          duration: 5000, 
-        });
-      });
-      return false;
-    }
+                canActivate(
+                  next: ActivatedRouteSnapshot,
+                  state: RouterStateSnapshot): Observable<boolean>  {
+                  return this.afAuth.authState.pipe(
+                    take(1),
+                    map((authState) => !!authState),
+                    tap(authenticated => {
+                      if (!authenticated) this.router.navigate(['/login']).then(() => {
+                            this.snackBar.open("Zaloguj się aby zobaczyć swój profil.", "Ok", {
+                              duration: 5000, 
+                            });
+                          });
+                    })
+                  )
+                }
   }
