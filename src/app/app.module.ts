@@ -40,7 +40,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     import { AnswerFormComponent } from './components/answer-components/answer-form/answer-form.component';
 //// Other
     import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
-
+//// Map 
+    import { MapComponent } from './components/map/map.component';
 //Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -54,6 +55,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
+
 
 
 export const appRoutes: Routes = [
@@ -110,7 +112,8 @@ export const appRoutes: Routes = [
     AnswerCardComponent,
     AnswerListComponent,
     QuestionAnswerContentComponent,
-    AnswerFormComponent
+    AnswerFormComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
