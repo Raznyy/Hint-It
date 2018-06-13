@@ -167,49 +167,67 @@ export class DatabaseService {
 
   voteForAnswer(questionKey: string, answerKey: string, voterId: string, voteType: "down"|"up"): PromiseLike<void>{
     const itemRef = this.db.database.ref('answers/'+questionKey+'/'+answerKey);
-    return itemRef.transaction(function(answer) {
-      if (answer) {
-        // Create list of voters if does not exist
-        if (!answer.votes) {
-          answer.votes = {};
-        }
-        // if voting up
-        if(voteType === "up"){
-          if (answer.votes[voterId] === 1) {
-            // remove up vote
-            answer.votes[voterId] = null;
-            answer.score--;
-            answer.voteCount--;
-          } else if (answer.votes[voterId] === -1) {
-            // change vote
-            answer.votes[voterId] = 1;
-            answer.score += 2;
-          } else {
-            // vote up
-            answer.votes[voterId] = 1;
-            answer.score++;
-            answer.voteCount++;
+    let answerAuthor = null;
+    let scoreChange = 0;
+    return itemRef.once('value').then(function(snapshot) {
+      answerAuthor = (snapshot.val() && snapshot.val().author);
+    }).then(()=>{
+      itemRef.transaction(function(answer) {
+        if (answer) {
+          // Create list of voters if does not exist
+          if (!answer.votes) {
+            answer.votes = {};
           }
-        // if voting down
-        }else{
-          if (answer.votes[voterId] === -1) {
-            // remove down vote
-            answer.votes[voterId] = null;
-            answer.score++;
-            answer.voteCount--;
-          } else if (answer.votes[voterId] === 1) {
-            // change vote
-            answer.votes[voterId] = -1;
-            answer.score -= 2;
-          } else {
-            // vote down
-            answer.votes[voterId] = -1;
-            answer.score--;
-            answer.voteCount++;
+          // if voting up
+          if(voteType === "up"){
+            if (answer.votes[voterId] === 1) {
+              // remove up vote
+              answer.votes[voterId] = null;
+              answer.score--;
+              answer.voteCount--;
+              scoreChange--;
+            } else if (answer.votes[voterId] === -1) {
+              // change vote
+              answer.votes[voterId] = 1;
+              answer.score += 2;
+              scoreChange += 2;
+            } else {
+              // vote up
+              answer.votes[voterId] = 1;
+              answer.score++;
+              answer.voteCount++;
+              scoreChange++;
+            }
+          // if voting down
+          }else{
+            if (answer.votes[voterId] === -1) {
+              // remove down vote
+              answer.votes[voterId] = null;
+              answer.score++;
+              answer.voteCount--;
+              scoreChange++;
+            } else if (answer.votes[voterId] === 1) {
+              // change vote
+              answer.votes[voterId] = -1;
+              answer.score -= 2;
+              scoreChange -= 2;
+            } else {
+              // vote down
+              answer.votes[voterId] = -1;
+              answer.score--;
+              answer.voteCount++;
+              scoreChange--;
+            }
           }
         }
-      }
-      return answer;
+        return answer;
+      }).then( () =>{
+        let authorRef = this.db.database.ref('/users/'+answerAuthor);
+        authorRef.transaction(function(user) {
+          console.log(user)
+          user.score += scoreChange;
+        });
+      });
     });
   }
 
