@@ -42,7 +42,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     import { MapComponent } from './components/map-components/map/map.component';   
     import { MapScreenComponent } from './components/map-components/map-screen/map-screen.component';
 //// Other
-    import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component';
+    import { NavigationTabComponent } from './components/navigation-tab/navigation-tab.component'; 
+    import { ScreenToolbarComponent } from './components/screen-toolbar/screen-toolbar.component';
 
 
 //Material
@@ -58,6 +59,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -86,7 +88,7 @@ export const appRoutes: Routes = [
     data:  { icon: '' }
   },
   { path: '',
-    redirectTo: '/',
+    redirectTo: '/list',
     pathMatch: 'full',
     data:  { icon: '' } // temporary , nie wiem jak rozwiazać aby nie wywalało mi błędu przy undefind 
   },
@@ -117,7 +119,8 @@ export const appRoutes: Routes = [
     QuestionAnswerContentComponent,
     AnswerFormComponent,
     MapComponent,
-    MapScreenComponent
+    MapScreenComponent,
+    ScreenToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +144,8 @@ export const appRoutes: Routes = [
     MatIconModule,
     MatGridListModule,
     MatSnackBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTooltipModule
   ],
   providers: [ 
     AuthService, 

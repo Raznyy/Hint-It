@@ -16,11 +16,11 @@
         [rowspan]="2"
     >
         <mat-card class="answer-user-points-container">
-            <mat-card class="answer-user-card">
-                <app-question-answer-user [answer]="answer"></app-question-answer-user>
-            </mat-card>
             <mat-card class="answer-user-card"> 
                 <app-question-answer-points (upVote)="voteUp($event)" (downVote)="voteDown($event)" [answer]="answer"></app-question-answer-points>
+            </mat-card>
+            <mat-card class="answer-user-card">
+                <app-question-answer-user [answer]="answer"></app-question-answer-user>
             </mat-card>
         </mat-card>
     </mat-grid-tile>

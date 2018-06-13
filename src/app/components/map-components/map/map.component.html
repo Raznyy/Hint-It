@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div>
   <div>
     <div>
       <button [disabled]="isTracking" class="btn btn-primary" (click)="findMe()">Find me</button>
@@ -20,4 +20,21 @@
     </div>
   </div>
   <br>
+</div> -->
+
+<div class="container">
+  
+  <mat-card [ngClass]="{'card-background':true}">
+    <div class='buttons-container'>
+        <button mat-raised-button color="primary" [disabled]="isTracking" class="btn btn-primary button-left" (click)="findMe()">Find me</button>
+        <button mat-raised-button color="primary" class="btn btn-primary button-right" (click)="trackMe()">Track me</button>
+    </div>
+    <div class='text-container'>
+        <span>Longitude: {{currentLong}} </span>
+    </div>
+    <div clas='map-container'>
+        <div #gmap class='map' style="width:100%;height:300px"></div>
+    </div>
+  </mat-card> 
+
 </div>

@@ -1,14 +1,34 @@
 .answer-card
 {
     padding: 5px;
-    height: 300px;
-    margin: 25px;
-    border: 2px #00EA60 solid;
+    min-height: 200px;
+    margin: 30px;
+    background: rgba(43,56,60, 0.7);
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 }
-.answer-cardmat-grid-tile mat-card
+.answer-card mat-grid-tile mat-card
+{
+    height: 90%;
+    box-sizing: border-box;
+    background: transparent !important;
+    color: #EAEFEF !important;
+}
+.answer-content-container
 {
     width: 100%;
     box-sizing: border-box;
+}
+.answer-user-card
+{
+    float:left;
+    display: flex;
+    align-items: center;
+}
+.answer-user-points-container
+{
+    float:right;
+    display: flex;
+    align-items: center;
 }
 .answer-content-container
 {

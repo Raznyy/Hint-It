@@ -3,3 +3,29 @@
     width: 100%;
     box-sizing: border-box;
 }
+.mat-form-field
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-row
+{
+    margin:15px;
+}
+
+.form-row textarea
+{ 
+    min-height: 250px;
+}
+
+.button-container 
+{
+    text-align: center;
+}
+.button-container button
+{
+    width: 50%;
+    font-size: 20px;
+    text-transform: uppercase;
+}

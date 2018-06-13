@@ -25,7 +25,9 @@ export class NavigationTabComponent implements OnInit {
     console.log(this.appRoutesVisible);
   }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    
   }
 
   navigate( path:String )

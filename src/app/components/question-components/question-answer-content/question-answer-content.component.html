@@ -1,22 +1,17 @@
 <mat-card-header>
-  <mat-card-title>
-      Title:
+  <mat-card-title class='question-title'>
       <p *ngIf="question">
         {{ (question | async)?.title }}
       </p>
   </mat-card-title>
   <mat-card-subtitle>
-      #HASZTAGI TUTAJ
   </mat-card-subtitle>
 </mat-card-header>
-<mat-card-content>
-  <h4>
-      Content: 
-        <p *ngIf="question">
-          {{ (question | async)?.content }}
-        </p>
-        <p *ngIf="answer">
-          {{ (answer)?.content }}
-        </p>
-      </h4>
+<mat-card-content class='question-answer-content'>
+  <p *ngIf="question">
+    {{ (question | async)?.content }}
+  </p>
+  <p *ngIf="answer">
+    {{ (answer)?.content }}
+  </p>
 </mat-card-content>

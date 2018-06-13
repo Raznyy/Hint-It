@@ -17,7 +17,7 @@ export class ListScreenComponent implements OnInit {
   constructor( databaseService:DatabaseService ) 
   {
     this.listTypes = [ 'Featured' , 'Closest' , 'Newest' , 'Active' ];
-    this.questions = databaseService.getQuestions();
+    this.questions = databaseService.getQuestions()
   }
 
   ngOnInit() {
