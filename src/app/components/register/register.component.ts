@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service'
 import { Router, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 type UserFields = 'email' | 'password';
 type FormErrors = { [u in UserFields]: string };
@@ -33,7 +34,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder) 
+    private fb: FormBuilder,
+    public afAuth: AngularFireAuth) 
     {
       this.createForm();
     }

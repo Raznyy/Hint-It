@@ -1,33 +1,50 @@
-<mat-card>
-  <mat-card-header>
-  <mat-card-title>Zarejestruj się.</mat-card-title>
-</mat-card-header>
+<div class="box" >
+  <div *ngIf="afAuth.user | async; then authenticated else guest">
+  </div>
+</div>
 
-<mat-card-content>
-    <form [formGroup]="registerForm">
-      <table cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field >
-              <input matInput placeholder="Email" name="email" formControlName="email" required>
-            </mat-form-field>
-            <div *ngIf="formErrors.email" class="valid-notify">
-              {{ formErrors.email }}
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td><mat-form-field >
-            <input matInput placeholder="Hasło"  type="password" name="password"formControlName="password" required>
-          </mat-form-field>
-          <div *ngIf="formErrors.password" class="valid-notify">
-            {{ formErrors.password }}
-          </div>
-        </td>
-        </tr></table>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button type="submit" (click)="emailRegister(registerForm.value)" color="primary" [disabled]="!registerForm.valid">Zarejestruj</button>
-  </mat-card-actions>
-</mat-card>
+<!-- zawartosc dla niezalogowanego uztykownika -->
+<ng-template #guest class="box">
+    <mat-card>
+        <mat-card-header>
+        <mat-card-title>Zarejestruj się.</mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+          <form [formGroup]="registerForm">
+            <table cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field >
+                    <input matInput placeholder="Email" name="email" formControlName="email" required>
+                  </mat-form-field>
+                  <div *ngIf="formErrors.email" class="valid-notify">
+                    {{ formErrors.email }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><mat-form-field >
+                  <input matInput placeholder="Hasło"  type="password" name="password"formControlName="password" required>
+                </mat-form-field>
+                <div *ngIf="formErrors.password" class="valid-notify">
+                  {{ formErrors.password }}
+                </div>
+              </td>
+              </tr></table>
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button type="submit" (click)="emailRegister(registerForm.value)" color="primary" [disabled]="!registerForm.valid">Zarejestruj</button>
+        </mat-card-actions>
+      </mat-card>
+</ng-template>
+
+<!-- zawartosc dla zalogowanego uzytkownika -->
+<ng-template #authenticated>
+  <div *ngIf="(afAuth.user | async) as user">
+      <mat-card-header>
+          <mat-card-title>Jesteś zarejestrowany.</mat-card-title>
+        </mat-card-header>
+  </div>
+</ng-template>
