@@ -213,8 +213,8 @@ export class DatabaseService {
     });
   }
 
-  createUser(userId: string, username: string, email: string, avatar: string): ThenableReference{
-    return this.usersRef.push({
+  createUser(userId: string, username: string, email: string, avatar: string): Promise<void>{
+    return this.usersRef.set(userId, {
       username: username,
       email: email,
       avatar: avatar,
