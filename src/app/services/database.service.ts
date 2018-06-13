@@ -167,12 +167,14 @@ export class DatabaseService {
 
   voteForAnswer(questionKey: string, answerKey: string, voterId: string, voteType: "down"|"up"): PromiseLike<void>{
     const itemRef = this.db.database.ref('answers/'+questionKey+'/'+answerKey);
-    let answerAuthor = null;
-    let scoreChange = 0;
+    let data = {
+      answerAuthor: null,
+      scoreChange: 0
+    };
     return itemRef.once('value').then(function(snapshot) {
-      answerAuthor = (snapshot.val() && snapshot.val().author);
+      data.answerAuthor = (snapshot.val() && snapshot.val().author);
     }).then(()=>{
-      itemRef.transaction(function(answer) {
+      itemRef.transaction((answer) => {
         if (answer) {
           // Create list of voters if does not exist
           if (!answer.votes) {
@@ -185,18 +187,18 @@ export class DatabaseService {
               answer.votes[voterId] = null;
               answer.score--;
               answer.voteCount--;
-              scoreChange--;
+              data.scoreChange--;
             } else if (answer.votes[voterId] === -1) {
               // change vote
               answer.votes[voterId] = 1;
               answer.score += 2;
-              scoreChange += 2;
+              data.scoreChange += 2;
             } else {
               // vote up
               answer.votes[voterId] = 1;
               answer.score++;
               answer.voteCount++;
-              scoreChange++;
+              data.scoreChange++;
             }
           // if voting down
           }else{
@@ -205,27 +207,29 @@ export class DatabaseService {
               answer.votes[voterId] = null;
               answer.score++;
               answer.voteCount--;
-              scoreChange++;
+              data.scoreChange++;
             } else if (answer.votes[voterId] === 1) {
               // change vote
               answer.votes[voterId] = -1;
               answer.score -= 2;
-              scoreChange -= 2;
+              data.scoreChange -= 2;
             } else {
               // vote down
               answer.votes[voterId] = -1;
               answer.score--;
               answer.voteCount++;
-              scoreChange--;
+              data.scoreChange--;
             }
           }
         }
         return answer;
       }).then( () =>{
-        let authorRef = this.db.database.ref('/users/'+answerAuthor);
+        let authorRef = this.db.database.ref('/users/'+data.answerAuthor);
         authorRef.transaction(function(user) {
-          console.log(user)
-          user.score += scoreChange;
+          if(user){
+            user.score += data.scoreChange;
+          }
+          return user;
         });
       });
     });
