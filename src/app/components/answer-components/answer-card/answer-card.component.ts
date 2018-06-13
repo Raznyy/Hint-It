@@ -20,19 +20,21 @@ export class AnswerCardComponent implements OnInit {
 
   constructor( private db: DatabaseService, public authService:AuthService ) 
   {
-    if( this.isLogged )
-    {
-      this.userUID = this.authService.getUserUID();
-    }   
+
   }
 
   ngOnInit() 
   {
     this.answerKey = this.answer['key'];
+    if( this.isLogged )
+    {
+      this.userUID = this.authService.getUserUID();
+    } 
   }
 
   voteUp()
   {
+    console.log(this.isLogged, this.userUID);
     if( this.isLogged )
     {
       this.db.voteForAnswer( this.questionKey , this.answerKey , this.userUID , 'up' )
