@@ -9,6 +9,7 @@ export interface Question {
     lng: number; // Longtitude
     timestamp: number; // Timestamp with time of creation
     author: string; // Author user id
+    authorName: string // Author display name
     answers: Array<string> // List of answers
     voteCount: number; // Latitude
     score: number;  // Total score
@@ -20,6 +21,7 @@ export interface Answer {
     content: string; // Description of answer
     timestamp: number; // Timestamp with time of creation
     author: string; // Author user id
+    authorName: string // Author display name
     voteCount: number; // Latitude
     score: number;  // Total score
     votes: Map<number>; // List of user id's with 1 or -1 values

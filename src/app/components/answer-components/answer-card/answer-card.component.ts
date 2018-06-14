@@ -60,7 +60,7 @@ export class AnswerCardComponent implements OnInit {
   showSnackbar()
   {
     this.authService.snackBar.open(
-      "Funkcja niedostępna dla niezalogowanych użytkowników. <br> Zaloguj się aby zagłosować.", 
+      "Funkcja niedostępna dla niezalogowanych użytkowników. Zaloguj się aby zagłosować.", 
       "Ok", 
       { 
         duration: 3000 

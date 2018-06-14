@@ -1,10 +1,10 @@
 <mat-card-header>
     <mat-card-title class='question-answer-author'>
         <p *ngIf="question">
-            {{ (question | async)?.author }}
+            {{ (question | async)?.authorName }}
         </p>
         <p *ngIf="answer">
-            {{ (answer)?.author }}
+            {{ (answer)?.authorName }}
         </p>
     </mat-card-title>
     <mat-card-subtitle>

@@ -30,7 +30,7 @@ export class DatabaseService {
     // );
   }
 
-  createQuestion(title: string, content: string, userId: string): ThenableReference{
+  createQuestion(title: string, content: string, userId: string, username: string): ThenableReference{
     return this.questionsRef.push({
       title: title,
       content: content,
@@ -38,6 +38,7 @@ export class DatabaseService {
       lng: 0,
       answers: [],
       author: userId,
+      authorName: username,
       timestamp: Date.now(),
       voteCount: 0,
       votes: {},
@@ -86,13 +87,14 @@ export class DatabaseService {
     // );
   }
 
-  createAnswer(questionKey: string, content: string, userId: string): PromiseLike<void>{
+  createAnswer(questionKey: string, content: string, userId: string, username: string): PromiseLike<void>{
     const ref = this.db.list('answers/'+questionKey).push({
       content: content,
       voteCount: 0,
       votes: {},
       score: 0,
       author: userId,
+      authorName: username,
       timestamp: Date.now()
     });
     const key = ref.key;

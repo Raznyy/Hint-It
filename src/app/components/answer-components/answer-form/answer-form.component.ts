@@ -38,7 +38,7 @@ export class AnswerFormComponent implements OnInit {
 
   respond( form:NgForm )
   {
-    this.db.createAnswer( this.questionKey, this.answerModel.content, this.userUID );
+    this.db.createAnswer( this.questionKey, this.answerModel.content, this.userUID, this.authService.getUserName() );
     this.answerModel = 
     {
       content: ""

@@ -47,6 +47,11 @@ export class AuthService {
       return this.afAuth.auth.currentUser.uid;
     }
 
+    getUserName(): string
+    {
+      return this.afAuth.auth.currentUser.displayName;
+    }
+
 
 //ustawienie logowania jako popup
 private oAuthLogin(provider) {
