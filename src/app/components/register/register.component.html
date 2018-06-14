@@ -16,6 +16,16 @@
               <tr>
                 <td>
                   <mat-form-field >
+                    <input matInput placeholder="Username" name="username" formControlName="username" required>
+                  </mat-form-field>
+                  <div *ngIf="formErrors.username" class="valid-notify">
+                    {{ formErrors.username }}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field >
                     <input matInput placeholder="Email" name="email" formControlName="email" required>
                   </mat-form-field>
                   <div *ngIf="formErrors.email" class="valid-notify">

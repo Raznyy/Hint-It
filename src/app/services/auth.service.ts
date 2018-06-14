@@ -65,10 +65,10 @@ emailSignup(value){
     .then(res => {
       console.log('Konto zostało stworzone', res);
       this.db.createUser(
-        value.user.uid,
-        "TMPUSERNAME",// xxx: porpawic - value.user.displayName,
-        value.user.email,
-        value.user.photoURL // tutaj tez chyba brakuje foty domyslnej
+        res.user.uid,
+        value.username,
+        res.user.email,
+        "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
       );
       this.router.navigate(['/profile']).then(() => {
         this.snackBar.open("Konto zostało zarejestrowane. Zalogowano.", "Ok", {

@@ -20,6 +20,11 @@ export class RegisterComponent implements OnInit {
     'password': '',
   };
   validationMessages = {
+    'username': {
+      'required': 'Pole nie może być puste.',
+      'minlength': 'Nazwa musi zawierać co najmniej 4 znaków.',
+      'maxlength': 'Nazwa nie może zawierać więcej niż 25 znaków.',
+    },
     'email': {
       'required': 'Pole nie może być puste.',
       'email': 'Email nie jest poprawny.',
@@ -28,7 +33,7 @@ export class RegisterComponent implements OnInit {
       'required': 'Pole nie może być puste.',
       'pattern': 'Hasło musi zawierac co najmniej jeden znak oraz cyfrę.',
       'minlength': 'Hasło musi zawierać co najmniej 6 znaków.',
-      'maxlength': 'Hasło nie może zawierać więcej niż 40 znaków.',
+      'maxlength': 'Hasło nie może zawierać więcej niż 25 znaków.',
     },
   };
 
@@ -42,6 +47,11 @@ export class RegisterComponent implements OnInit {
 
     createForm() {
       this.registerForm = this.fb.group({
+        'username': ['', [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(25)
+        ]],
         'email': ['', [
           Validators.required,
           Validators.email,
