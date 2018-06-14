@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
       if (!this.registerForm) { return; }
       const form = this.registerForm;
       for (const field in this.formErrors) {
-        if (Object.prototype.hasOwnProperty.call(this.formErrors, field) && (field === 'email' || field === 'password')) {
+        if (Object.prototype.hasOwnProperty.call(this.formErrors, field) && (field === 'email' || field === 'password' || field === 'username')) {
           this.formErrors[field] = '';
           const control = form.get(field);
           if (control && control.dirty && !control.valid) {
