@@ -38,12 +38,19 @@ export class AnswerFormComponent implements OnInit {
 
   respond( form:NgForm )
   {
-    this.db.createAnswer( this.questionKey, this.answerModel.content, this.userUID, this.authService.getUserName() );
-    this.answerModel = 
+    if( this.isLogged )
     {
-      content: ""
-    };
-    form.reset();
+      this.db.createAnswer( this.questionKey, this.answerModel.content, this.userUID, this.authService.getUserName() );
+      this.answerModel = 
+      {
+        content: ""
+      };
+      form.reset();
+    }
+    else
+    {
+      this.authService.snackBar.open( "Możliwe tylko dla zalogowanych użytkowników. Zaloguj się aby odpowiedzieć.");
+    }
   }
 
 }

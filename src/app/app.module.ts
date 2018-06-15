@@ -78,7 +78,7 @@ export const appRoutes: Routes = [
     data:  { icon: 'list' }
   }, // LISTA 
   { path: 'register', component: AuthPopupComponent,
-    data:  { icon: 'account_circle' }
+    data:  { icon: 'lock' }
   }, // Testowy na razie aby otwierać popupa - trzeba sprawzdić czy user jest zalogowany i wyswietlac popup w odpowiednim momencie
   { path: 'profile', component: UserProfileScreenComponent,
     data:  { icon: 'account_circle' },

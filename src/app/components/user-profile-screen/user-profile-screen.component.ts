@@ -21,8 +21,7 @@ export class UserProfileScreenComponent implements OnInit {
   question: Observable<Question>;
   questionKey: string;
 
-  userUID: string;
-  isLogged: boolean;
+  userQuestions:Observable<Question[]>;
 
   
 
@@ -41,6 +40,9 @@ export class UserProfileScreenComponent implements OnInit {
       this.question = db.getQuestion( this.questionKey )
     });
    
+
+    // get user Questions
+    this.userQuestions = db.getUserQuestions( this.userId );
    
   }
 

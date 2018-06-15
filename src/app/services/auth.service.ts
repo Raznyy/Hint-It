@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import {MatSnackBar} from '@angular/material';
 import { DatabaseService } from './database.service';
+import { PopupService } from './popup/popup.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private router: Router,
     private db: DatabaseService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public popUpService: PopupService,
   ) { 
     this.user = afAuth.authState;
 
@@ -87,6 +89,7 @@ emailLogin(value){
   return new Promise<any>((resolve, reject) => {
     firebase.auth().signInWithEmailAndPassword(value.email, value.password)
     .then(res => {
+      this.popUpService.closePopup();
       console.log('Zalogowano');
       this.router.navigate(['/profile']).then(() => {
         this.snackBar.open("Zalogowano.", "Ok", {
@@ -175,5 +178,6 @@ googleLogin() {
       });
     });
     
-}
+  }
+
 }

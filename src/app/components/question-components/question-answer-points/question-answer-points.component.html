@@ -1,8 +1,11 @@
 <div class="point-vote-row">
-    <button 
+    <button
+      class="buttonUp"
       mat-icon-button color="primary"
       matTooltip="Vote up!"
-      (click)="vote('up')"
+      (click)="vote('up');  addClass( id = 1 )"
+      [ngClass]="{'clicked': id === 1 }"
+      id = "1"
     >
       <mat-icon>
         arrow_drop_up
@@ -16,10 +19,13 @@
           {{ (answer)?.score }}
       </p>
 
-    <button 
+    <button
+      class="buttonDown"
       mat-icon-button color="accent"
       matTooltip="Vote down!"
-      (click)="vote('down')"
+      (click)="vote('down'); addClass( id = 2 )"
+      [ngClass]="{'clicked': id === 2 }"
+      id = "2"
     >
       <mat-icon>
         arrow_drop_down

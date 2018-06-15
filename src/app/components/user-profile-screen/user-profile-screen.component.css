@@ -30,3 +30,38 @@
     width: 150px;
     height: auto;
 }
+
+.profile-container
+{
+    height: 90%;
+    box-sizing: border-box;
+    color: #EAEFEF !important;
+    padding: 15px;
+    margin: 15px;
+    background: rgba( 0 , 231, 183, 0.7);
+}
+.profile-container mat-card
+{
+    box-sizing: border-box;
+    background: transparent !important;
+    color: #EAEFEF !important;
+}
+
+.profile-container button
+{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mat-card-title
+{
+    font-size: 15px;
+    color: #EAEFEF;
+    font-weight: 400;
+}
+
+.mat-card-subtitle
+{
+    font-size: 20px;
+    font-weight: 400;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { PopupService } from '../../services/popup/popup.service';
-import {MAT_DIALOG_DATA} from '@angular/material'
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material'
 
 @Component({
   selector: 'app-auth-popup',
@@ -9,9 +9,18 @@ import {MAT_DIALOG_DATA} from '@angular/material'
 })
 export class AuthPopupComponent implements OnInit {
 
-  constructor( @Inject(MAT_DIALOG_DATA) public data: any ) { } // INTERFACE
+  constructor
+  ( 
+    public dialogRef: MatDialogRef<AuthPopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any 
+  ) { } // INTERFACE
 
-  ngOnInit() {
+  ngOnInit()
+  {
   }
 
+  public closeDialog()
+  {
+    this.dialogRef.close();
+  }
 }

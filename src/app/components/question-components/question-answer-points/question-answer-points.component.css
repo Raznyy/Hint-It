@@ -8,3 +8,21 @@
 {
     margin: 0;
 }
+
+button mat-icon
+{
+    transition: all .2s ease-in-out;
+    color: #FFFFFF;
+}
+
+.buttonDown.clicked mat-icon
+{
+    color: red;
+    transform: scale(1.1);
+}
+
+.buttonUp.clicked mat-icon
+{
+    color: #19ff19;
+    transform: scale(1.1);
+}

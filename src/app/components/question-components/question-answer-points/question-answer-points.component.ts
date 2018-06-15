@@ -17,11 +17,13 @@ export class QuestionAnswerPointsComponent implements OnInit {
   @Output() upVote: EventEmitter<any> = new EventEmitter();
   @Output() downVote: EventEmitter<any> = new EventEmitter();
 
-  ngOnInit() 
+  id: any;
+
+  ngOnInit()
   {
   }
 
-  vote( voteType: String )
+  vote( voteType: string )
   {
     if ( voteType == 'up' ) 
     {
@@ -31,6 +33,11 @@ export class QuestionAnswerPointsComponent implements OnInit {
     {
       this.downVote.emit(null);
     }
+  }
+
+  addClass(id: any) 
+  {
+    this.id = id;
   }
 
 }

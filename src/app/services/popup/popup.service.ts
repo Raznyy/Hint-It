@@ -10,9 +10,9 @@ export class PopupService implements PopupInterface {
   constructor(public dialog: MatDialog) { }
 
   type: String;
-  tab: String;
+  tab: String
 
-  openPopup( type:String, tab:String ): void 
+  openPopup( type:String, tab:String ) 
   {
     this.type = type;
     this.tab = tab;
@@ -40,6 +40,12 @@ export class PopupService implements PopupInterface {
       width: '500px',
       data: { selectedTabIndex: selectedTabIndex }
     });
+
+  }
+
+  public closePopup()
+  {
+    this.dialog.closeAll();
   }
   
 }

@@ -1,28 +1,57 @@
 <app-screen-toolbar [screenName]="'Your profile'"></app-screen-toolbar>
-<mat-card > 
-  <p *ngIf="user">
-    Username: {{ (this.user | async)?.username }}
-  </p>
-</mat-card>
-<mat-card > 
-  <p *ngIf="user">
-    Email: {{ (this.user | async)?.email }}
-  </p>
-</mat-card>
-<mat-card > 
-  Zdjecie: <img class="avatar" async src="{{ (this.user | async)?.avatar }}" />
-</mat-card>
-<mat-card > 
-  <p *ngIf="question">
-   Pytania: {{ (question | async)?.author }}
-</p>
-</mat-card>
-<mat-card > 
-  <p *ngIf="user">
-    Punkty: {{ (this.user | async)?.score }}
-  </p>
-</mat-card>
 
-<mat-card > 
+
+<mat-card class='profile-container'>
+  <mat-card > 
+      <mat-card-header *ngIf="user">
+        <mat-card-title>
+          Username:
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ (this.user | async)?.username }}
+        </mat-card-subtitle>
+      </mat-card-header>
+  </mat-card>
+  <mat-card > 
+    <mat-card-header *ngIf="user">
+      <mat-card-title>
+        Email:
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ (this.user | async)?.email }}
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  <mat-card >
+      <mat-card-header *ngIf="user">
+        <mat-card-title>
+            Zdjecie:
+        </mat-card-title>
+        <mat-card-subtitle>
+            <img class="avatar" async src="{{ (this.user | async)?.avatar }}" />
+        </mat-card-subtitle>
+      </mat-card-header> 
+  </mat-card>
+  <mat-card >
+      <mat-card-header *ngIf="user">
+        <mat-card-title>
+            Pytania:
+        </mat-card-title>
+        <mat-card-subtitle>
+            <app-list [questions]="userQuestions"></app-list>
+        </mat-card-subtitle>
+      </mat-card-header>
+  </mat-card>
+  <mat-card > 
+    <mat-card-header *ngIf="user">
+        <mat-card-title>
+          Punkty:
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ (this.user | async)?.score }}
+        </mat-card-subtitle>
+      </mat-card-header>
+  </mat-card>
+  
   <button mat-raised-button type="submit" (click)="signOut()" color="primary">Wyloguj</button>
 </mat-card>
