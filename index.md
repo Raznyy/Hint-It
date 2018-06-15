@@ -1,37 +1,78 @@
-## Welcome to GitHub Pages
+# Nazwa projektu: Hint it
 
-You can use the [editor on GitHub](https://github.com/Raznyy/Hint-It/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+## Opis projektu:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Hint it to aplikacja, dzięki której uzyskasz szybką odpowiedź na pytanie jakiekolwiek pytanie w wybranej okolicy. W aplikacji jest baza użytkowników, każdy z nich posiada punkty i może tworzyć lub tez odpowiadać na pytania. Pytając o sugestie możesz uzyskać odpowiedź na pytanie. Jeżeli odpowiedź jest dobra, udzielasz jej dodatnie punkty, w przeciwnym wypadku punkty ujemne. Każdy kolejno uzyskany punkt wydłuża czas widoczności danego pytania oraz odpowiedzi do niego. Odczyt lokalizacji z urządzenia pozwala na zadawanie pytań w wybranym przez użytkownika obszarze, nie większym niż domyślny. 
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Zespół projektowy:
 
-```markdown
-Syntax highlighted code block
+  <li>Dawid Raźny (Kierownik projektu)</li>
+  <li>Maciej Pawlisz</li> 
+  <li>Damian Suchy</li>
+  <li>Marcin Hernas</li>
 
-# Header 1
-## Header 2
-### Header 3
+## Report prac zespołu:
 
-- Bulleted
-- List
+**Łączny czas każdego członka zespołu poświęcony na projekt:**
 
-1. Numbered
-2. List
+#### Dawid Raźny: 47 h
 
-**Bold** and _Italic_ and `Code` text
+1. Koordynacja całego projektu
+2. Nadzorowanie oraz pełna obsługa systemu git ( kontrolowanie branchy/ merge'owanie / rozwiazywanie konfliktów)
+3. Utworzenie mockupa w programie Balsamic Mockup ( wraz z póniejszymi poprawkami )
+4. Tworzenie oraz przydzielanie zadań w systemie trello ( koordynacja )
+5. Porządkowanie kodu/ poprawianie nazw plikow / kontrolowanie struktury folderów
+6. Stworzenie systemu obsługi widoku poszczególnych ekranów ( nawigacja )
+7. Utworzenie komponentów:
+  a) pytania 
+  b) odpowiedzi
+  c) popupa z interfacem do pozniejszego rozwoju 
+  d) listy pytan ( pobierana z bazy danych )
+  e) usera w pytaniu i odpowiedzi
+  f) oceniania pytania i odpowiedz ( wyglad )
+  g) formularz do odpowiadania na pytanie ( rowniez z funkcjonalnościa połączenia przez database service )
+  h) lista odpowiedzi dla pytania
+8. Ostylowanie całości projektu - wszystkich komponentów przy uyciu angular material theme
+9. Stworzenie listy pytań w widoku pojedynczego profilu
 
-[Link](url) and ![Image](src)
-```
+#### Maciej Pawlisz: 37,5 h
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+1. Nadzorowanie zadań i struktury kodu.
+2. Research obsługi bazy danych firebase oraz jej implementacja w projekcie w postaci databse.service.
+3. W serwisie zaimplementowano metody do ładowania danych użytkownika, wpisy pytań, odpowiedzi oraz obsługę wszystkich zdarzeń takich jak zmiana wartości w bazie, głosowanie, tworzenie i aktualizacja danych.
+4. Oprócz tego wszystkie zadania związane ładowaniem danych z bazy oraz wymyśleniem schematu bazy.
+5. Stworzenie wstępnego ekranu do tworzenia pytań oraz testowanie ładowania danych. 
+6. Stworzenie systemu głosowania
+7. Naprawa pomniejszych błędów oraz ulepszenia związane z autoryzacją użytkownika i jego danych w bazie.
+8. Próba portowania projektu na platormę andorid za pomocą phonegap.
 
-### Jekyll Themes
+#### Damian Suchy: X h
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Raznyy/Hint-It/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+1. Serwis autoryzacji(auth.service)
+2. research firebase - auth
+3. przykładowa strona logowania z firebase(google,facebook,email)
+4. komponent rejestracji
+5. komponent logowania
+6. auth.guard - blokowanie profilu dla niezalogowanych użytkowników
+7. wyświetlanie komunikatów po logowaniu/rejestracji, błędów
+8. wyświetlanie danych użytkownika w profilu
+9. poprawa błędów w stworzonych komponentach/serwisach
 
-### Support or Contact
+#### Marcin Hernas: X h
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+1. component(bold, kursywa, link), 
+2. component map, 
+3. dodanie lokalizacji użytkownika do mapy
+4. ogarniecie firebase, 
+5. test aplikacji, 
+6. lista poprawek, 
+7. phonegap, 
+8. strona internetowa na github
+  
+**Informacje:**
+
+  <li>Strona internetowa projektu <a href="https://raznyy.github.io/Hint-It/">Github Pages</a></li>
+  <li>Prototyp projektu znajduje się w pliku <a href="https://github.com/Raznyy/Hint-It/blob/master/mockup/Exports/Hint%20it!%20-%20Mockup%20v4.pdf">Mockup</a></li>
+  <li>Repozytorium z projektem znajduje się <a href="https://github.com/Raznyy/Hint-It">Platforma Github</a></li>
+  <li>Wykaz wykonanych prac oraz poświęcony na nie czas znajduje się <a href="https://trello.com/b/TPkiTLzT/hint-it-projekt-specjalizacja-wsei">Platforma Trello</a></li>
