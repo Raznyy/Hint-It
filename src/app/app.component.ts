@@ -9,6 +9,6 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'Hint It!';
 
-  constructor(public authService: AuthService){}
+  constructor(){}
 
 }

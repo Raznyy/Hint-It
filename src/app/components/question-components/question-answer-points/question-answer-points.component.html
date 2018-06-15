@@ -2,15 +2,24 @@
     <button 
       mat-icon-button color="primary"
       matTooltip="Vote up!"
+      (click)="vote('up')"
     >
       <mat-icon>
         arrow_drop_up
       </mat-icon>
     </button>
-    20
+    
+      <p *ngIf="question">
+          {{ (question | async)?.score }}
+      </p>
+      <p *ngIf="answer">
+          {{ (answer)?.score }}
+      </p>
+
     <button 
       mat-icon-button color="accent"
       matTooltip="Vote down!"
+      (click)="vote('down')"
     >
       <mat-icon>
         arrow_drop_down

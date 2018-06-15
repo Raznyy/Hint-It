@@ -1,0 +1,14 @@
+.screen-name-toolbar mat-toolbar-row
+{
+    justify-content: center;
+    color: #EBEFF0;
+    font-weight: 700;
+    font-size: 40px;
+    text-transform: uppercase;
+    -webkit-transition: color 0.5s; 
+    transition: color 0.5s; 
+}
+.screen-name-toolbar mat-toolbar-row:hover 
+{
+    color: #18C2A4;
+}

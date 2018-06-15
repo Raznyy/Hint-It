@@ -25,3 +25,8 @@
     background: #6FA616;
     height: 100%;
 }
+
+.avatar{
+    width: 150px;
+    height: auto;
+}

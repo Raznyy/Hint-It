@@ -1,13 +1,13 @@
 <mat-card-header>
-    <mat-card-title>
-        Author: {{ (question | async)?.author }}
+    <mat-card-title class='question-answer-author'>
+        <p *ngIf="question">
+            {{ (question | async)?.authorName }}
+        </p>
+        <p *ngIf="answer">
+            {{ (answer)?.authorName }}
+        </p>
     </mat-card-title>
     <mat-card-subtitle>
-      Punkty usera: 123
-      <br>
-      Bage: jakies tam badge
+        User points: 125
     </mat-card-subtitle>
 </mat-card-header>
-<mat-card-content>
-    Fotka USERA 
-</mat-card-content>

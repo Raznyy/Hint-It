@@ -4,3 +4,7 @@
     width: 100%;
     margin: 0 auto;
 }
+.point-vote-row p
+{
+    margin: 0;
+}

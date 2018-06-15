@@ -1,31 +1,44 @@
+<app-screen-toolbar [screenName]="'Ask'"></app-screen-toolbar>
+
 <div class="question-create-screen">
+  
+  <mat-card [ngClass]="{'card-background':true}">  
+    <form (ngSubmit)="onSubmit(questionForm)" #questionForm="ngForm">
 
-  <form (ngSubmit)="onSubmit(questionForm)" #questionForm="ngForm">
-
-    <div class="form-row">
-      <mat-form-field>
-        <input matInput placeholder="Title" 
-              type="text" id="title"
-              required
-              [(ngModel)]="questionModel.title" name="title"
-              #title="ngModel">
-      </mat-form-field>
-    </div>
-    
-    <div class="form-row">
+      <div class="form-row">
+        <span>Title:</span>
         <mat-form-field>
-          <input matInput placeholder="Description" 
-                type="text" id="content"
+          <input matInput placeholder="Write title here..." 
+                type="text" id="title"
                 required
-                [(ngModel)]="questionModel.content" name="content"
-                #content="ngModel">
+                [(ngModel)]="questionModel.title" name="title"
+                #title="ngModel">
         </mat-form-field>
-    </div>
-    
-    <div class="form-row">
-        <button mat-raised-button type="submit" class="btn btn-success" [disabled]="!questionForm.form.valid">Submit</button>
-    </div>
+      </div>
+      
+      <div class="form-row">
+          <span>Description:</span>
+          <mat-form-field>
+            <textarea matInput placeholder="Write description here..." 
+                  type="text" id="content"
+                  required
+                  [(ngModel)]="questionModel.content" name="content"
+                  #content="ngModel">
+            </textarea>
+          </mat-form-field>
+      </div>
+      
+      <div class="form-row button-container">
+          <button 
+            mat-raised-button type="submit" 
+            matTooltip="Fill all inputs to proceed."
+            class="btn btn-success" 
+            [disabled]="!questionForm.form.valid"
+          >
+            Submit
+          </button>
+      </div>
 
-  </form>
-
+    </form>
+  </mat-card>
 </div>

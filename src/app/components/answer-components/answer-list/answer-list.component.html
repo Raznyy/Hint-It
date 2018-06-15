@@ -1,0 +1,6 @@
+<mat-card
+  class="answer-list-element"
+  *ngFor="let answer of answers | async; let i = index;"
+>
+  <app-answer-card [answer]="answer" [isLogged]="isLogged" [questionKey]="questionKey"></app-answer-card>
+</mat-card>

@@ -1,0 +1,17 @@
+<mat-card-header>
+  <mat-card-title class='question-title'>
+      <p *ngIf="question">
+        {{ (question | async)?.title }}
+      </p>
+  </mat-card-title>
+  <mat-card-subtitle>
+  </mat-card-subtitle>
+</mat-card-header>
+<mat-card-content class='question-answer-content'>
+  <p *ngIf="question">
+    {{ (question | async)?.content }}
+  </p>
+  <p *ngIf="answer">
+    {{ (answer)?.content }}
+  </p>
+</mat-card-content>

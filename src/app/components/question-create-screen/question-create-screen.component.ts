@@ -3,6 +3,7 @@ import { QuestionDraft } from '../../model/interfaces';
 import { DatabaseService } from '../../services/database.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-question-create-screen',
@@ -14,13 +15,12 @@ export class QuestionCreateScreenComponent implements OnInit {
   private questionModel: QuestionDraft;
   public db: DatabaseService;
 
-  constructor(db: DatabaseService, public afAuth: AngularFireAuth) {
+  constructor(db: DatabaseService, public authService:AuthService) {
     this.db = db;
     this.questionModel = {
       title: "",
       content: ""
     };
-    console.log(this.afAuth.auth.currentUser.uid)
   }
 
   ngOnInit() {
@@ -42,7 +42,7 @@ export class QuestionCreateScreenComponent implements OnInit {
   }
 
   createQuestionFromDraft(draft: QuestionDraft){
-    this.db.createQuestion(draft.title, draft.content, this.afAuth.auth.currentUser.uid);
+    this.db.createQuestion(draft.title, draft.content, this.authService.getUserUID(), this.authService.getUserName());
   }
 
 }

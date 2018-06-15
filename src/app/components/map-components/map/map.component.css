@@ -1,0 +1,48 @@
+.card-background
+{
+    margin: 30px;
+    background: rgba( 0 , 231, 183, 0.7);
+}
+.buttons-container
+{
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+}
+.buttons-container .button-left
+{
+    margin: 10px;
+    min-width: 40%;
+    max-width: 50%;
+    box-sizing: border-box;
+    float: left;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.buttons-container .button-right
+{
+    min-width: 40%;
+    margin: 10px;
+    max-width: 50%;
+    box-sizing: border-box;
+    float: right;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.text-container
+{
+    margin:20px;
+    width: 100%;
+    text-align: center;
+    color: #EAEFEF;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.map
+{
+    border: 2px solid rgba(0,0,0,.2);
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
