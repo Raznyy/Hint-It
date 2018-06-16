@@ -47,7 +47,7 @@ Hint it to aplikacja, dzięki której uzyskasz szybką odpowiedź na pytanie jak
 7. Naprawa pomniejszych błędów oraz ulepszenia związane z autoryzacją użytkownika i jego danych w bazie.
 8. Próba portowania projektu na platormę andorid za pomocą phonegap.
 
-#### Damian Suchy: X h
+#### Damian Suchy: 21,5 h
 
 1. Serwis autoryzacji(auth.service)
 2. research firebase - auth
@@ -59,7 +59,7 @@ Hint it to aplikacja, dzięki której uzyskasz szybką odpowiedź na pytanie jak
 8. wyświetlanie danych użytkownika w profilu
 9. poprawa błędów w stworzonych komponentach/serwisach
 
-#### Marcin Hernas: X h
+#### Marcin Hernas: 21 h
 
 1. component(bold, kursywa, link), 
 2. component map, 
@@ -76,3 +76,5 @@ Hint it to aplikacja, dzięki której uzyskasz szybką odpowiedź na pytanie jak
   <li>Prototyp projektu znajduje się w pliku <a href="https://github.com/Raznyy/Hint-It/blob/master/mockup/Exports/Hint%20it!%20-%20Mockup%20v4.pdf">Mockup</a></li>
   <li>Repozytorium z projektem znajduje się <a href="https://github.com/Raznyy/Hint-It">Platforma Github</a></li>
   <li>Wykaz wykonanych prac oraz poświęcony na nie czas znajduje się <a href="https://trello.com/b/TPkiTLzT/hint-it-projekt-specjalizacja-wsei">Platforma Trello</a></li>
+  <li>Zbiór godzin wraz z wykresem <a href="https://docs.google.com/spreadsheets/d/1eHLPMh8v8M1L0pmq5MHng6udeNPjGiZlSGheC8Lt284/edit?usp=sharing">Dokument Spreadsheet</a></li>
+
